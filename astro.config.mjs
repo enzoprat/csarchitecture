@@ -5,7 +5,9 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.csarchitecture.fr',
+  site: 'https://enzoprat.github.io',
+  base: '/csarchitecture',
+  trailingSlash: 'always',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],

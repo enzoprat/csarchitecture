@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import SplitTitle from "../components/SplitTitle.astro";
+import { withBase } from "../lib/url";
 
 const team = [
   { name: "Stéphane Caussarrieu", role: "Architecte D.P.L.G.", img: "/images/team/stephane.jpg", bio: "Fondateur de l'agence, indépendant depuis 1995. Il porte une architecture attentive au site, à l'usage et à la performance." },
@@ -49,7 +50,7 @@ const values = [
   <!-- Grande image -->
   <section class="shell pb-20 md:pb-28">
     <div class="mask-reveal aspect-[16/9] bg-[color:var(--color-stone)] overflow-hidden">
-      <img src="/images/site/agence.jpg" alt="L'agence CS Architecture à Orléans" loading="lazy" class="w-full h-[110%] object-cover" data-parallax="0.06" />
+      <img src={withBase("/images/site/agence.jpg")} alt="L'agence CS Architecture à Orléans" loading="lazy" class="w-full h-[110%] object-cover" data-parallax="0.06" />
     </div>
   </section>
 
@@ -78,7 +79,7 @@ const values = [
         {team.map((m, i) => (
           <div class="member group" data-reveal style={`--reveal-delay:${(i % 4) * 80}ms`}>
             <div class="mask-reveal aspect-[3/4] bg-[color:var(--color-stone)] overflow-hidden relative">
-              <img src={m.img} alt={m.name} loading="lazy" class="w-full h-full object-cover grayscale-[0.15] transition-all duration-[1.2s] group-hover:grayscale-0 group-hover:scale-[1.04]" />
+              <img src={withBase(m.img)} alt={m.name} loading="lazy" class="w-full h-full object-cover grayscale-[0.15] transition-all duration-[1.2s] group-hover:grayscale-0 group-hover:scale-[1.04]" />
               <div class="absolute inset-0 bg-[color:var(--color-ink)]/85 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5 z-[3]">
                 <p class="text-[color:var(--color-paper)]/90 text-sm leading-relaxed translate-y-3 group-hover:translate-y-0 transition-transform duration-500">{m.bio}</p>
               </div>

@@ -1,11 +1,12 @@
 ---
 import type { Project } from "../data/projects";
+import { withBase } from "../lib/url";
 interface Props { project: Project; index?: number; size?: "tall" | "wide" | "std" }
 const { project: p, index = 0, size = "std" } = Astro.props;
 const ratio = size === "tall" ? "aspect-[3/4]" : size === "wide" ? "aspect-[16/10]" : "aspect-[4/3]";
 ---
 <a
-  href={`/references/${p.slug}/`}
+  href={withBase(`/references/${p.slug}/`)}
   data-astro-prefetch
   data-cursor="Voir le projet"
   data-reveal
@@ -15,7 +16,7 @@ const ratio = size === "tall" ? "aspect-[3/4]" : size === "wide" ? "aspect-[16/1
 >
   <div class={`mask-reveal ${ratio} bg-[color:var(--color-stone)] overflow-hidden`}>
     <img
-      src={p.thumb}
+      src={withBase(p.thumb)}
       alt={`${p.title} — ${p.city}`}
       loading="lazy"
       decoding="async"

@@ -1,5 +1,6 @@
 ---
 import { nav, site } from "../data/site";
+import { withBase } from "../lib/url";
 interface Props { overlayDark?: boolean }
 const { overlayDark = false } = Astro.props;
 const path = Astro.url.pathname;
@@ -11,17 +12,17 @@ const path = Astro.url.pathname;
 >
   <div class="header-line absolute inset-x-0 bottom-0 h-px bg-[color:var(--color-line)] opacity-0 transition-opacity duration-500"></div>
   <div class="shell flex items-center justify-between h-[72px] md:h-[84px]">
-    <a href="/" class="header-brand group relative z-10 flex items-center" aria-label="CS Architecture — Accueil" data-astro-prefetch>
-      <img src="/images/brand/logo-cs-noir.png" alt="CS Architecture — Architectes à Orléans" width="1771" height="816" class="logo-dark h-11 md:h-14 w-auto" />
-      <img src="/images/brand/logo-cs-color.png" alt="CS Architecture — Architectes à Orléans" width="1181" height="544" class="logo-light h-11 md:h-14 w-auto" />
+    <a href={withBase("/")} class="header-brand group relative z-10 flex items-center" aria-label="CS Architecture — Accueil" data-astro-prefetch>
+      <img src={withBase("/images/brand/logo-cs-noir.png")} alt="CS Architecture — Architectes à Orléans" width="1771" height="816" class="logo-dark h-11 md:h-14 w-auto" />
+      <img src={withBase("/images/brand/logo-cs-color.png")} alt="CS Architecture — Architectes à Orléans" width="1181" height="544" class="logo-light h-11 md:h-14 w-auto" />
     </a>
 
     <nav class="hidden lg:flex items-center gap-9" aria-label="Navigation principale">
       {nav.map((item) => (
         <a
-          href={item.href}
+          href={withBase(item.href)}
           data-astro-prefetch
-          class:list={["header-nav-link text-[0.82rem] tracking-wide link-underline", path.startsWith(item.href) && item.href !== "/" ? "is-active" : ""]}
+          class:list={["header-nav-link text-[0.82rem] tracking-wide link-underline", path.startsWith(withBase(item.href)) && item.href !== "/" ? "is-active" : ""]}
         >{item.label}</a>
       ))}
     </nav>
@@ -43,7 +44,7 @@ const path = Astro.url.pathname;
   <div class="shell h-full flex flex-col justify-between pt-28 pb-10">
     <nav class="flex flex-col" aria-label="Navigation mobile">
       {nav.map((item, i) => (
-        <a href={item.href} class="mobile-link group flex items-baseline justify-between border-b border-white/10 py-5 overflow-hidden" style={`--i:${i}`}>
+        <a href={withBase(item.href)} class="mobile-link group flex items-baseline justify-between border-b border-white/10 py-5 overflow-hidden" style={`--i:${i}`}>
           <span class="mobile-link-inner display t-h3">{item.label}</span>
           <span class="mono text-white/40 text-[0.6rem]">0{i + 1}</span>
         </a>

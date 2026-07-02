@@ -4,6 +4,7 @@ import SplitTitle from "../components/SplitTitle.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 import { featuredProjects, projects } from "../data/projects";
 import { site } from "../data/site";
+import { withBase } from "../lib/url";
 
 const selection = featuredProjects.slice(0, 4);
 const markets = [
@@ -34,7 +35,7 @@ const process = [
   <section class="relative isolate min-h-[100svh] flex flex-col justify-end text-[color:var(--color-paper)] overflow-hidden">
     <div class="absolute inset-0 z-0">
       <div class="mask-reveal is-in w-full h-full">
-        <img src="/images/site/hero-home.jpg" alt="Réalisation architecturale CS Architecture à Orléans" data-parallax="0.08" class="w-full h-[112%] object-cover" fetchpriority="high" />
+        <img src={withBase("/images/site/hero-home.jpg")} alt="Réalisation architecturale CS Architecture à Orléans" data-parallax="0.08" class="w-full h-[112%] object-cover" fetchpriority="high" />
       </div>
       <div class="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/85 via-[color:var(--color-ink)]/25 to-[color:var(--color-ink)]/50"></div>
       <div class="blueprint absolute inset-0 opacity-[0.12]"></div>
@@ -63,8 +64,8 @@ const process = [
           Depuis Orléans, CS Architecture conçoit, réhabilite et transforme des lieux publics, tertiaires et privés avec une approche globale du bâtiment, de l'usage et de l'environnement.
         </p>
         <div class="col-span-12 md:col-span-6 lg:col-span-7 flex flex-wrap gap-4 md:justify-end" data-reveal style="--reveal-delay:320ms">
-          <a href="/references/" class="btn btn-light group" data-astro-prefetch><span>Explorer les références</span><span class="arrow">→</span></a>
-          <a href="/agence/" class="btn btn-light group" data-astro-prefetch><span>Découvrir l'agence</span></a>
+          <a href={withBase("/references/")} class="btn btn-light group" data-astro-prefetch><span>Explorer les références</span><span class="arrow">→</span></a>
+          <a href={withBase("/agence/")} class="btn btn-light group" data-astro-prefetch><span>Découvrir l'agence</span></a>
         </div>
       </div>
     </div>
@@ -121,14 +122,14 @@ const process = [
           { i: "02", t: "Maquette numérique BIM", img: "/images/site/digital.jpg", href: "/maquette-numerique/", d: "De la conception à l'exécution, le BIM comme outil de coordination, de lisibilité et de maîtrise du projet.", tags: ["BIM", "Coordination", "Précision", "GED"] },
           { i: "03", t: "Architecture intérieure", img: "/images/site/interieur.jpg", href: "/agence/", d: "Usages, mobilier, lumière et harmonie : concevoir des lieux de vie cohérents jusque dans le détail.", tags: ["Usages", "Mobilier", "Confort", "Matières"] },
         ].map((e, idx) => (
-          <a href={e.href} data-astro-prefetch data-cursor="Découvrir" class="expertise group grid grid-cols-12 items-center gap-4 py-8 md:py-10 border-t border-[color:var(--color-line)] last:border-b" data-reveal>
+          <a href={withBase(e.href)} data-astro-prefetch data-cursor="Découvrir" class="expertise group grid grid-cols-12 items-center gap-4 py-8 md:py-10 border-t border-[color:var(--color-line)] last:border-b" data-reveal>
             <span class="mono col-span-2 md:col-span-1 text-[color:var(--color-sage)]">{e.i}</span>
             <div class="col-span-10 md:col-span-4">
               <h3 class="font-serif text-[clamp(1.6rem,3vw,2.6rem)] leading-tight tracking-[-0.01em] transition-transform duration-700 [transition-timing-function:var(--ease-out-expo)] group-hover:translate-x-2">{e.t}</h3>
             </div>
             <div class="hidden md:block col-span-3 overflow-hidden">
               <div class="h-24 w-full max-w-[240px] overflow-hidden bg-[color:var(--color-stone)] opacity-0 -translate-x-4 transition-all duration-700 [transition-timing-function:var(--ease-out-expo)] group-hover:opacity-100 group-hover:translate-x-0">
-                <img src={e.img} alt={e.t} loading="lazy" class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-[1.4s]" />
+                <img src={withBase(e.img)} alt={e.t} loading="lazy" class="w-full h-full object-cover scale-105 group-hover:scale-100 transition-transform duration-[1.4s]" />
               </div>
             </div>
             <p class="col-span-12 md:col-span-3 text-[color:var(--color-muted)] text-sm leading-relaxed mt-2 md:mt-0">{e.d}</p>
@@ -146,7 +147,7 @@ const process = [
         <p class="mono mb-6" data-reveal>Références sélectionnées</p>
         <SplitTitle as="h2" class="display t-h1" lines={["Des lieux durables,", { text: "cohérents et vivants.", italic: true }]} />
       </div>
-      <a href="/references/" class="btn group self-start md:self-end" data-astro-prefetch><span>Toutes les références</span><span class="arrow">→</span></a>
+      <a href={withBase("/references/")} class="btn group self-start md:self-end" data-astro-prefetch><span>Toutes les références</span><span class="arrow">→</span></a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-14">
@@ -175,7 +176,7 @@ const process = [
               </li>
             ))}
           </ul>
-          <a href="/architecture-durable/" class="btn btn-light group mt-10" data-astro-prefetch><span>Notre engagement</span><span class="arrow">→</span></a>
+          <a href={withBase("/architecture-durable/")} class="btn btn-light group mt-10" data-astro-prefetch><span>Notre engagement</span><span class="arrow">→</span></a>
         </div>
 
         <div class="col-span-12 lg:col-span-6 lg:col-start-7" data-plan>
@@ -222,10 +223,10 @@ const process = [
           <div class="relative">
             <!-- Effet de calques -->
             <div class="mask-reveal aspect-[4/3] bg-[color:var(--color-stone)] overflow-hidden" data-parallax="0.04">
-              <img src="/images/site/bim-1.png" alt="Maquette numérique BIM d'un bâtiment" loading="lazy" class="w-full h-full object-cover" />
+              <img src={withBase("/images/site/bim-1.png")} alt="Maquette numérique BIM d'un bâtiment" loading="lazy" class="w-full h-full object-cover" />
             </div>
             <div class="absolute -bottom-10 -right-4 md:-right-10 w-1/2 mask-reveal aspect-[4/3] bg-[color:var(--color-sand)] border-4 border-[color:var(--color-paper)] shadow-sm overflow-hidden" data-parallax="0.12">
-              <img src="/images/site/bim-2.png" alt="Coordination de maquette BIM" loading="lazy" class="w-full h-full object-cover" />
+              <img src={withBase("/images/site/bim-2.png")} alt="Coordination de maquette BIM" loading="lazy" class="w-full h-full object-cover" />
             </div>
             <div class="absolute -top-6 -left-4 hidden md:flex items-center gap-2 mono bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-4 py-2">
               <span class="h-1.5 w-1.5 rounded-full bg-[color:var(--color-sage)]"></span>BIM · niveau LOD 350
@@ -247,7 +248,7 @@ const process = [
               </div>
             ))}
           </div>
-          <a href="/maquette-numerique/" class="btn group mt-10" data-astro-prefetch><span>Explorer le BIM</span><span class="arrow">→</span></a>
+          <a href={withBase("/maquette-numerique/")} class="btn group mt-10" data-astro-prefetch><span>Explorer le BIM</span><span class="arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -258,7 +259,7 @@ const process = [
     <div class="shell grid12 gap-y-14 items-center">
       <div class="col-span-12 lg:col-span-5">
         <div class="mask-reveal aspect-[4/5] bg-[color:var(--color-stone)] overflow-hidden">
-          <img src="/images/site/agence.jpg" alt="L'agence CS Architecture" loading="lazy" data-parallax="0.06" class="w-full h-[110%] object-cover" />
+          <img src={withBase("/images/site/agence.jpg")} alt="L'agence CS Architecture" loading="lazy" data-parallax="0.06" class="w-full h-[110%] object-cover" />
         </div>
       </div>
       <div class="col-span-12 lg:col-span-6 lg:col-start-7">
@@ -272,7 +273,7 @@ const process = [
             <div><span class="display text-[clamp(2.2rem,5vw,3.5rem)] block leading-none">{k}</span><span class="mono mt-2 block max-w-[14ch]">{v}</span></div>
           ))}
         </div>
-        <a href="/agence/" class="btn group mt-12" data-astro-prefetch><span>Rencontrer l'équipe</span><span class="arrow">→</span></a>
+        <a href={withBase("/agence/")} class="btn group mt-12" data-astro-prefetch><span>Rencontrer l'équipe</span><span class="arrow">→</span></a>
       </div>
     </div>
   </section>

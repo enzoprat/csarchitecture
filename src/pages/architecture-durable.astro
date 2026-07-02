@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import SplitTitle from "../components/SplitTitle.astro";
+import { withBase } from "../lib/url";
 
 const pillars = [
   { k: "Bâtiment basse consommation", d: "Concevoir des bâtiments THPE et BBC, bien avant que la réglementation ne l'impose." },
@@ -20,7 +21,7 @@ const pillars = [
   <!-- Hero -->
   <section class="relative isolate h-[82svh] min-h-[520px] flex items-end text-[color:var(--color-paper)] overflow-hidden">
     <div class="absolute inset-0 z-0 mask-reveal is-in">
-      <img src="/images/site/durable-hero.jpg" alt="Architecture durable — bâtiment performant" class="w-full h-[112%] object-cover" data-parallax="0.08" fetchpriority="high" />
+      <img src={withBase("/images/site/durable-hero.jpg")} alt="Architecture durable — bâtiment performant" class="w-full h-[112%] object-cover" data-parallax="0.08" fetchpriority="high" />
       <div class="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/85 via-[color:var(--color-ink)]/20 to-[color:var(--color-ink)]/40"></div>
       <div class="blueprint absolute inset-0 opacity-[0.1]"></div>
     </div>
@@ -100,11 +101,11 @@ const pillars = [
   <!-- Bande image + citation -->
   <section class="shell pb-24 md:pb-36 grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
     <div class="md:col-span-6 mask-reveal aspect-[4/3] bg-[color:var(--color-stone)] overflow-hidden">
-      <img src="/images/site/durable.jpg" alt="Bâtiment durable réalisé par CS Architecture" loading="lazy" class="w-full h-full object-cover" />
+      <img src={withBase("/images/site/durable.jpg")} alt="Bâtiment durable réalisé par CS Architecture" loading="lazy" class="w-full h-full object-cover" />
     </div>
     <div class="md:col-span-6 flex flex-col justify-center bg-[color:var(--color-paper-2)] p-10 md:p-14">
       <SplitTitle as="p" class="display t-h3 max-w-[22ch]" stagger={70} lines={["« Concevoir avec précision,", { text: "construire avec", italic: true }, { text: "responsabilité. »", accent: true }]} />
-      <a href="/references/" class="btn group mt-10 self-start" data-astro-prefetch><span>Voir les projets durables</span><span class="arrow">→</span></a>
+      <a href={withBase("/references/")} class="btn group mt-10 self-start" data-astro-prefetch><span>Voir les projets durables</span><span class="arrow">→</span></a>
     </div>
   </section>
 </Base>

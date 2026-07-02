@@ -1,5 +1,6 @@
 ---
 import { nav, site } from "../data/site";
+import { withBase } from "../lib/url";
 const year = new Date().getFullYear();
 ---
 <footer class="relative bg-[color:var(--color-ink)] text-[color:var(--color-paper)] overflow-hidden">
@@ -9,12 +10,12 @@ const year = new Date().getFullYear();
     <div class="grid12 items-end gap-y-10 pb-16 md:pb-24 border-b border-white/10">
       <div class="col-span-12 lg:col-span-8">
         <p class="mono text-white/40 mb-6">Un projet, une intention</p>
-        <a href="/contact/" class="group block" data-astro-prefetch>
+        <a href={withBase("/contact/")} class="group block" data-astro-prefetch>
           <span class="display t-h1 block leading-[0.95]">Parlons<br /><span class="display-italic text-[color:var(--color-sage)]">d'un projet.</span></span>
         </a>
       </div>
       <div class="col-span-12 lg:col-span-4 lg:text-right">
-        <a href="/contact/" class="btn btn-light group" data-astro-prefetch>
+        <a href={withBase("/contact/")} class="btn btn-light group" data-astro-prefetch>
           <span>Prendre contact</span>
           <span class="arrow">→</span>
         </a>
@@ -24,7 +25,7 @@ const year = new Date().getFullYear();
     <!-- Colonnes -->
     <div class="grid12 gap-y-12 pt-14">
       <div class="col-span-12 md:col-span-5">
-        <img src="/images/brand/logo-cs-color.png" alt="CS Architecture" width="1181" height="544" class="h-14 w-auto" />
+        <img src={withBase("/images/brand/logo-cs-color.png")} alt="CS Architecture" width="1181" height="544" class="h-14 w-auto" />
         <p class="text-white/50 text-sm mt-4 max-w-xs leading-relaxed">
           Agence d'architecture et de design d'intérieur à Orléans. Conception, réhabilitation et maquette numérique, du bâtiment public au privé.
         </p>
@@ -33,7 +34,7 @@ const year = new Date().getFullYear();
         <span class="mono text-white/35 block mb-5">Navigation</span>
         <ul class="space-y-3">
           {nav.map((item) => (
-            <li><a href={item.href} class="text-white/75 hover:text-white transition-colors text-[0.95rem] link-underline">{item.label}</a></li>
+            <li><a href={withBase(item.href)} class="text-white/75 hover:text-white transition-colors text-[0.95rem] link-underline">{item.label}</a></li>
           ))}
         </ul>
       </nav>

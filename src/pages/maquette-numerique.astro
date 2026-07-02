@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import SplitTitle from "../components/SplitTitle.astro";
+import { withBase } from "../lib/url";
 
 const steps = [
   { k: "Conception à exécution", d: "Une seule maquette porte le projet, du parti architectural jusqu'au chantier." },
@@ -37,7 +38,7 @@ const steps = [
   <section class="shell py-16 md:py-28">
     <div class="relative h-[380px] sm:h-[520px] md:h-[640px]" id="layers">
       <div class="layer absolute inset-0 mask-reveal bg-[color:var(--color-stone)] overflow-hidden" data-parallax="0.02">
-        <img src="/images/site/bim-1.png" alt="Maquette numérique BIM d'un bâtiment" loading="lazy" class="w-full h-full object-cover" />
+        <img src={withBase("/images/site/bim-1.png")} alt="Maquette numérique BIM d'un bâtiment" loading="lazy" class="w-full h-full object-cover" />
       </div>
       <div class="layer absolute inset-0 pointer-events-none" data-parallax="0.08">
         <svg viewBox="0 0 1000 640" preserveAspectRatio="xMidYMid slice" class="w-full h-full" fill="none" aria-hidden="true">
@@ -50,7 +51,7 @@ const steps = [
         </svg>
       </div>
       <div class="layer absolute -bottom-8 right-4 md:right-10 w-[46%] max-w-[380px] mask-reveal aspect-[4/3] bg-[color:var(--color-sand)] border-4 border-[color:var(--color-paper)] shadow-sm overflow-hidden" data-parallax="0.16">
-        <img src="/images/site/bim-2.png" alt="Coordination de maquette BIM — site industriel" loading="lazy" class="w-full h-full object-cover" />
+        <img src={withBase("/images/site/bim-2.png")} alt="Coordination de maquette BIM — site industriel" loading="lazy" class="w-full h-full object-cover" />
       </div>
       <div class="absolute top-4 left-4 mono bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-4 py-2 flex items-center gap-2">
         <span class="h-1.5 w-1.5 rounded-full bg-[color:var(--color-sage)]"></span>Modèle fédéré · multi-disciplines
@@ -89,14 +90,14 @@ const steps = [
   <!-- Exemple + citation -->
   <section class="shell py-24 md:py-32 grid12 gap-y-12 items-center">
     <div class="col-span-12 lg:col-span-6 mask-reveal aspect-[16/10] bg-[color:var(--color-stone)] overflow-hidden">
-      <img src="/images/site/dessin-dao.jpg" alt="Dessin technique et maquette numérique" loading="lazy" class="w-full h-full object-cover" data-parallax="0.04" />
+      <img src={withBase("/images/site/dessin-dao.jpg")} alt="Dessin technique et maquette numérique" loading="lazy" class="w-full h-full object-cover" data-parallax="0.04" />
     </div>
     <div class="col-span-12 lg:col-span-5 lg:col-start-8">
       <p class="mono mb-6" data-reveal>Exemple de maquette BIM</p>
       <p class="t-lead text-[color:var(--color-ink)] leading-relaxed" data-reveal style="--reveal-delay:100ms">
         La maquette numérique d'un site industriel de production de cosmétiques devient un véritable atout pour les services généraux de l'entreprise : la description précise et indexée du bâti permet surveillance et anticipation.
       </p>
-      <a href="/references/" class="btn group mt-10" data-astro-prefetch><span>Voir nos réalisations</span><span class="arrow">→</span></a>
+      <a href={withBase("/references/")} class="btn group mt-10" data-astro-prefetch><span>Voir nos réalisations</span><span class="arrow">→</span></a>
     </div>
   </section>
 </Base>
