@@ -1,0 +1,241 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { ClientRouter } from "astro:transitions";
+import { site } from "../data/site";
+
+interface Props {
+  title: string;
+  description: string;
+  overlayDark?: boolean;
+  image?: string;
+  noindex?: boolean;
+}
+const {
+  title,
+  description,
+  overlayDark = false,
+  image = "/images/projects/lycee-bolland-full.jpg",
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://www.csarchitecture.fr").toString();
+const fullTitle = title.includes("CS Architecture") ? title : `${title} — CS Architecture`;
+
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://www.csarchitecture.fr/#organization",
+  name: "CS Architecture",
+  description:
+    "Agence d'architecture et de design d'intérieur à Orléans. Architecture durable, réhabilitation et maquette numérique BIM.",
+  url: "https://www.csarchitecture.fr",
+  telephone: site.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.street,
+    postalCode: site.address.postal,
+    addressLocality: site.address.city,
+    addressCountry: "FR",
+  },
+  areaServed: "Centre-Val de Loire",
+  knowsAbout: [
+    "Architecture durable",
+    "Maquette numérique BIM",
+    "Design d'intérieur",
+    "Réhabilitation de bâtiment",
+    "Rénovation énergétique",
+  ],
+  founder: { "@type": "Person", name: "Stéphane Caussarrieu", jobTitle: "Architecte DPLG" },
+};
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>document.documentElement.classList.add("js");</script>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="CS Architecture" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL(image, Astro.site).toString()} />
+    <meta property="og:locale" content="fr_FR" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..500;1,6..72,300..500&family=Manrope:wght@300..700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
+    <ClientRouter />
+  </head>
+  <body>
+    <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+    <div class="cursor-label" id="cursor-label" aria-hidden="true">Voir</div>
+
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-[color:var(--color-ink)] focus:text-[color:var(--color-paper)] focus:px-4 focus:py-2">Aller au contenu</a>
+
+    <Header overlayDark={overlayDark} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      import Lenis from "lenis";
+
+      let lenis: any = null;
+      let rafId = 0;
+      const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      function initLenis() {
+        if (prefersReduced) return;
+        lenis = new Lenis({ duration: 1.1, easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+        function raf(time: number) { lenis.raf(time); rafId = requestAnimationFrame(raf); }
+        rafId = requestAnimationFrame(raf);
+      }
+      function destroyLenis() { if (lenis) { lenis.destroy(); lenis = null; } cancelAnimationFrame(rafId); }
+
+      // Reveal on scroll (elements + line titles).
+      // Rect/position-based rather than IntersectionObserver so it works even
+      // when the document is backgrounded/hidden (IO callbacks don't fire then).
+      function initReveals() {
+        const els = Array.from(
+          document.querySelectorAll<HTMLElement>("[data-reveal], [data-reveal-lines], .mask-reveal, [data-plan], .reveal-lines")
+        );
+        const check = () => {
+          const vh = window.innerHeight;
+          for (let i = els.length - 1; i >= 0; i--) {
+            if (els[i].getBoundingClientRect().top < vh * 0.9) {
+              els[i].classList.add("is-in");
+              els.splice(i, 1);
+            }
+          }
+          if (!els.length) return true;
+          return false;
+        };
+        check();
+        if (els.length) onWin("scroll", check);
+      }
+
+      // Registry of window listeners so SPA navigations don't leak them
+      let winCleanup: Array<() => void> = [];
+      function onWin(type: string, fn: any) {
+        window.addEventListener(type, fn, { passive: true });
+        winCleanup.push(() => window.removeEventListener(type, fn));
+      }
+      function clearWin() { winCleanup.forEach((f) => f()); winCleanup = []; }
+
+      // Header scroll state
+      function initHeader() {
+        const header = document.getElementById("site-header");
+        if (!header) return;
+        const onScroll = () => {
+          if (window.scrollY > 48) header.classList.add("scrolled");
+          else header.classList.remove("scrolled");
+        };
+        onScroll();
+        onWin("scroll", onScroll);
+      }
+
+      // Mobile menu
+      function initMenu() {
+        const toggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("mobile-menu");
+        if (!toggle || !menu) return;
+        const close = () => {
+          document.body.classList.remove("menu-open");
+          menu.classList.remove("is-open");
+          menu.setAttribute("aria-hidden", "true");
+          toggle.setAttribute("aria-expanded", "false");
+          lenis?.start();
+        };
+        toggle.addEventListener("click", () => {
+          const open = document.body.classList.toggle("menu-open");
+          menu.classList.toggle("is-open", open);
+          menu.setAttribute("aria-hidden", open ? "false" : "true");
+          toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          open ? lenis?.stop() : lenis?.start();
+        });
+        menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
+      }
+
+      // Custom cursor
+      function initCursor() {
+        if (prefersReduced || window.matchMedia("(pointer: coarse)").matches) return;
+        const dot = document.getElementById("cursor-dot");
+        const label = document.getElementById("cursor-label");
+        if (!dot || !label) return;
+        let x = window.innerWidth / 2, y = window.innerHeight / 2;
+        let lx = x, ly = y;
+        onWin("mousemove", (e: MouseEvent) => { x = e.clientX; y = e.clientY; });
+        const loop = () => {
+          lx += (x - lx) * 0.2; ly += (y - ly) * 0.2;
+          dot.style.transform = `translate(${x}px, ${y}px) translate(-50%,-50%)`;
+          label.style.transform = `translate(${lx}px, ${ly}px) translate(-50%,-50%) scale(${document.body.classList.contains("cursor-view") ? 1 : 0.6})`;
+          requestAnimationFrame(loop);
+        };
+        loop();
+        // Delegation : survit aux navigations SPA sans ré-attacher.
+        document.addEventListener("mouseover", (e) => {
+          const t = (e.target as HTMLElement).closest("[data-cursor]");
+          if (t) { label.textContent = t.getAttribute("data-cursor") || "Voir"; document.body.classList.add("cursor-view"); }
+        });
+        document.addEventListener("mouseout", (e) => {
+          const t = (e.target as HTMLElement).closest("[data-cursor]");
+          if (t) document.body.classList.remove("cursor-view");
+        });
+      }
+
+      // Light parallax
+      function initParallax() {
+        if (prefersReduced) return;
+        const items = document.querySelectorAll<HTMLElement>("[data-parallax]");
+        if (!items.length) return;
+        const onScroll = () => {
+          const vh = window.innerHeight;
+          items.forEach((el) => {
+            const speed = parseFloat(el.dataset.parallax || "0.15");
+            const rect = el.getBoundingClientRect();
+            const offset = (rect.top + rect.height / 2 - vh / 2) * -speed;
+            el.style.transform = `translate3d(0, ${offset.toFixed(1)}px, 0)`;
+          });
+        };
+        onScroll();
+        onWin("scroll", onScroll);
+      }
+
+      let cursorRunning = false;
+      function boot() {
+        clearWin();
+        initLenis();
+        initReveals();
+        initHeader();
+        initMenu();
+        if (!cursorRunning) { initCursor(); cursorRunning = true; }
+        initParallax();
+      }
+
+      // Initial load: script sits at end of <body>, DOM is ready.
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", boot, { once: true });
+      } else {
+        boot();
+      }
+      // SPA navigations via the View Transitions router.
+      document.addEventListener("astro:after-swap", boot);
+      document.addEventListener("astro:before-swap", () => { destroyLenis(); document.body.classList.remove("menu-open"); });
+    </script>
+  </body>
+</html>

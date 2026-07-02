@@ -1,0 +1,30 @@
+---
+/**
+ * SplitTitle — titre à révélation ligne par ligne.
+ * Passer les lignes en tableau. Chaque ligne est animée avec un léger décalage.
+ */
+interface Props {
+  lines: (string | { text: string; italic?: boolean; accent?: boolean })[];
+  as?: keyof HTMLElementTagNameMap;
+  class?: string;
+  stagger?: number;
+}
+const { lines, as = "h2", class: cls = "", stagger = 90 } = Astro.props;
+const Tag = as as any;
+---
+<Tag class={`reveal-lines ${cls}`} data-reveal-lines>
+  {lines.map((line, i) => {
+    const isObj = typeof line !== "string";
+    const text = isObj ? (line as any).text : line;
+    const italic = isObj && (line as any).italic;
+    const accent = isObj && (line as any).accent;
+    return (
+      <span class="line">
+        <span
+          style={`--line-delay:${i * stagger}ms`}
+          class={`${italic ? "display-italic" : ""} ${accent ? "text-[color:var(--color-sage)]" : ""}`}
+        >{text}</span>
+      </span>
+    );
+  })}
+</Tag>

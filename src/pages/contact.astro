@@ -1,0 +1,144 @@
+---
+import Base from "../layouts/Base.astro";
+import SplitTitle from "../components/SplitTitle.astro";
+import { site } from "../data/site";
+---
+<Base
+  title="Contact — CS Architecture, architecte à Orléans"
+  description="Parlons de votre projet. Contactez CS Architecture, agence d'architecture et de design d'intérieur à Orléans : 26 avenue de Saint-Mesmin, 45100 Orléans."
+  overlayDark={false}
+>
+  <section class="shell pt-36 md:pt-48 pb-16">
+    <p class="mono mb-8" data-reveal>Contact</p>
+    <SplitTitle as="h1" class="display t-hero max-w-[14ch]" lines={["Parlons", { text: "d'un projet.", italic: true }]} />
+    <p class="t-lead text-[color:var(--color-muted)] max-w-2xl mt-10" data-reveal style="--reveal-delay:140ms">
+      Une intention, un site, un programme : dites-nous en quelques mots ce qui vous amène. Nous vous répondons avec attention.
+    </p>
+  </section>
+
+  <section class="shell pb-24 md:pb-32 grid12 gap-y-16">
+    <!-- Formulaire -->
+    <div class="col-span-12 lg:col-span-7">
+      <form id="contact-form" class="space-y-10" novalidate>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+          <div class="field">
+            <label for="name" class="mono block mb-3">Nom *</label>
+            <input id="name" name="name" type="text" required autocomplete="name" class="input" placeholder="Votre nom" />
+          </div>
+          <div class="field">
+            <label for="email" class="mono block mb-3">Email *</label>
+            <input id="email" name="email" type="email" required autocomplete="email" class="input" placeholder="vous@exemple.fr" />
+          </div>
+          <div class="field">
+            <label for="phone" class="mono block mb-3">Téléphone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" class="input" placeholder="Optionnel" />
+          </div>
+          <div class="field">
+            <label for="type" class="mono block mb-3">Nature du projet</label>
+            <select id="type" name="type" class="input">
+              <option>Construction neuve</option>
+              <option>Réhabilitation</option>
+              <option>Rénovation énergétique</option>
+              <option>Design d'intérieur</option>
+              <option>Autre</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="message" class="mono block mb-3">Votre projet *</label>
+          <textarea id="message" name="message" rows="5" required class="input resize-none" placeholder="Site, programme, surface, intentions…"></textarea>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-center gap-6">
+          <button type="submit" class="btn group"><span>Envoyer le message</span><span class="arrow">→</span></button>
+          <p id="form-status" class="mono text-[color:var(--color-sage)]" role="status" aria-live="polite"></p>
+        </div>
+        <p class="mono text-[color:var(--color-faint)]">* Champs requis. Vos informations ne servent qu'à traiter votre demande.</p>
+      </form>
+    </div>
+
+    <!-- Coordonnées -->
+    <aside class="col-span-12 lg:col-span-4 lg:col-start-9 space-y-12">
+      <div>
+        <span class="mono block mb-4">Nous trouver</span>
+        <address class="not-italic font-serif text-xl leading-relaxed">
+          {site.address.street}<br />{site.address.postal} {site.address.city}
+        </address>
+      </div>
+      <div>
+        <span class="mono block mb-4">Nous appeler</span>
+        <a href={`tel:${site.phoneHref}`} class="font-serif text-xl link-underline">{site.phone}</a>
+      </div>
+      <div>
+        <span class="mono block mb-4">Nous écrire</span>
+        <a href={`mailto:${site.email}`} class="font-serif text-xl link-underline">{site.email}</a>
+      </div>
+      <div>
+        <span class="mono block mb-4">Horaires</span>
+        <p class="text-[color:var(--color-muted)]">Du lundi au vendredi<br />9h – 12h30 · 14h – 18h</p>
+      </div>
+    </aside>
+  </section>
+
+  <!-- Carte stylisée -->
+  <section class="shell pb-24 md:pb-32">
+    <a
+      href="https://www.openstreetmap.org/?mlat=47.882&mlon=1.888#map=15/47.882/1.888"
+      target="_blank" rel="noopener"
+      data-cursor="Ouvrir"
+      class="group relative block aspect-[21/9] bg-[color:var(--color-paper-2)] overflow-hidden border border-[color:var(--color-line)]"
+      aria-label="Voir CS Architecture sur la carte"
+    >
+      <div class="blueprint absolute inset-0 opacity-60"></div>
+      <!-- Routes stylisées -->
+      <svg class="absolute inset-0 w-full h-full" viewBox="0 0 1200 500" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMid slice">
+        <path d="M0 340 Q400 300 700 360 T1200 320" stroke="var(--color-stone)" stroke-width="10"/>
+        <path d="M300 0 L520 500" stroke="var(--color-stone)" stroke-width="6"/>
+        <path d="M900 0 L760 500" stroke="var(--color-stone)" stroke-width="6"/>
+        <path d="M0 180 L1200 150" stroke="var(--color-line)" stroke-width="3"/>
+      </svg>
+      <!-- Pin -->
+      <div class="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-full flex flex-col items-center">
+        <div class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-4 py-2 mono whitespace-nowrap">CS Architecture</div>
+        <span class="mt-2 h-3 w-3 rounded-full bg-[color:var(--color-sage)] ring-4 ring-[color:var(--color-sage)]/25 group-hover:scale-125 transition-transform duration-500"></span>
+      </div>
+      <span class="absolute bottom-4 right-5 mono text-[color:var(--color-faint)]">47.88° N · 1.89° E — Orléans</span>
+    </a>
+  </section>
+</Base>
+
+<style>
+  .input {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-line);
+    padding: 0.6rem 0;
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+    color: var(--color-ink);
+    transition: border-color 0.5s var(--ease-out-expo);
+  }
+  .input::placeholder { color: var(--color-faint); }
+  .input:focus { outline: none; border-color: var(--color-ink); }
+  select.input { appearance: none; cursor: pointer; }
+</style>
+
+<script>
+  function initContact() {
+    const form = document.getElementById("contact-form") as HTMLFormElement | null;
+    if (!form) return;
+    const status = document.getElementById("form-status");
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const data = new FormData(form);
+      const subject = encodeURIComponent(`Projet — ${data.get("name")}`);
+      const body = encodeURIComponent(
+        `Nom : ${data.get("name")}\nEmail : ${data.get("email")}\nTéléphone : ${data.get("phone") || "—"}\nNature : ${data.get("type")}\n\n${data.get("message")}`
+      );
+      if (status) status.textContent = "Ouverture de votre messagerie…";
+      window.location.href = `mailto:contact@csarchitecture.fr?subject=${subject}&body=${body}`;
+    });
+  }
+  document.addEventListener("astro:page-load", initContact);
+</script>

@@ -1,0 +1,82 @@
+---
+import { nav, site } from "../data/site";
+interface Props { overlayDark?: boolean }
+const { overlayDark = false } = Astro.props;
+const path = Astro.url.pathname;
+---
+<header
+  id="site-header"
+  data-overlay={overlayDark ? "dark" : "light"}
+  class:list={["fixed top-0 inset-x-0 z-50 transition-colors duration-500", overlayDark ? "is-overlay" : "is-solid"]}
+>
+  <div class="header-line absolute inset-x-0 bottom-0 h-px bg-[color:var(--color-line)] opacity-0 transition-opacity duration-500"></div>
+  <div class="shell flex items-center justify-between h-[72px] md:h-[84px]">
+    <a href="/" class="header-brand group relative z-10 flex items-center" aria-label="CS Architecture — Accueil" data-astro-prefetch>
+      <img src="/images/brand/logo-cs-noir.png" alt="CS Architecture — Architectes à Orléans" width="1771" height="816" class="logo-dark h-11 md:h-14 w-auto" />
+      <img src="/images/brand/logo-cs-color.png" alt="CS Architecture — Architectes à Orléans" width="1181" height="544" class="logo-light h-11 md:h-14 w-auto" />
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-9" aria-label="Navigation principale">
+      {nav.map((item) => (
+        <a
+          href={item.href}
+          data-astro-prefetch
+          class:list={["header-nav-link text-[0.82rem] tracking-wide link-underline", path.startsWith(item.href) && item.href !== "/" ? "is-active" : ""]}
+        >{item.label}</a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-5">
+      <div class="hidden xl:block">
+        <a href={`tel:${site.phoneHref}`} class="header-nav-link mono text-[0.62rem] link-underline">{site.phone}</a>
+      </div>
+      <button id="menu-toggle" class="lg:hidden relative z-10 flex flex-col justify-center items-end gap-[6px] w-9 h-9" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span class="menu-bar block h-px w-7 bg-current transition-all duration-500"></span>
+        <span class="menu-bar block h-px w-5 bg-current transition-all duration-500"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Menu mobile plein écran -->
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-[color:var(--color-ink)] text-[color:var(--color-paper)] lg:hidden" aria-hidden="true">
+  <div class="shell h-full flex flex-col justify-between pt-28 pb-10">
+    <nav class="flex flex-col" aria-label="Navigation mobile">
+      {nav.map((item, i) => (
+        <a href={item.href} class="mobile-link group flex items-baseline justify-between border-b border-white/10 py-5 overflow-hidden" style={`--i:${i}`}>
+          <span class="mobile-link-inner display t-h3">{item.label}</span>
+          <span class="mono text-white/40 text-[0.6rem]">0{i + 1}</span>
+        </a>
+      ))}
+    </nav>
+    <div class="flex flex-col gap-1 text-white/70">
+      <span class="mono text-white/40 mb-2">Nous trouver</span>
+      <span class="text-[0.95rem]">{site.address.street}, {site.address.postal} {site.address.city}</span>
+      <a href={`tel:${site.phoneHref}`} class="text-[0.95rem] link-underline w-fit">{site.phone}</a>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Logo : version noire sur fond clair, version blanche sur fond sombre */
+  .logo-light { display: none; }
+  #site-header.is-overlay:not(.scrolled) .logo-dark { display: none; }
+  #site-header.is-overlay:not(.scrolled) .logo-light { display: inline-block; }
+  body.menu-open #site-header .logo-dark { display: none; }
+  body.menu-open #site-header .logo-light { display: inline-block; }
+
+  #site-header.is-overlay { color: var(--color-paper); }
+  #site-header.is-solid { color: var(--color-ink); background: color-mix(in srgb, var(--color-paper) 88%, transparent); backdrop-filter: blur(10px); }
+  #site-header.is-solid .header-line { opacity: 1; }
+  #site-header.scrolled { color: var(--color-ink); background: color-mix(in srgb, var(--color-paper) 88%, transparent); backdrop-filter: blur(10px); }
+  #site-header.scrolled .header-line { opacity: 1; }
+  .header-nav-link.is-active::after { transform: scaleX(1); }
+  body.menu-open #menu-toggle .menu-bar:first-child { transform: translateY(3.5px) rotate(45deg); width: 1.75rem; }
+  body.menu-open #menu-toggle .menu-bar:last-child { transform: translateY(-3.5px) rotate(-45deg); width: 1.75rem; }
+  body.menu-open #site-header { color: var(--color-paper); background: transparent; backdrop-filter: none; }
+  body.menu-open #site-header .header-line { opacity: 0; }
+  #mobile-menu { transform: translateY(-100%); transition: transform 0.7s var(--ease-in-out-quart); }
+  #mobile-menu.is-open { transform: translateY(0); }
+  .mobile-link-inner { display: block; transform: translateY(100%); transition: transform 0.7s var(--ease-out-expo); }
+  #mobile-menu.is-open .mobile-link-inner { transform: translateY(0); transition-delay: calc(var(--i) * 80ms + 200ms); }
+</style>

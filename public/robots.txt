@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.csarchitecture.fr/sitemap-index.xml

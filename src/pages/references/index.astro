@@ -1,0 +1,126 @@
+---
+import Base from "../../layouts/Base.astro";
+import SplitTitle from "../../components/SplitTitle.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { projects, CATEGORIES } from "../../data/projects";
+
+// Ordre éditorial : projets phares d'abord
+const ordered = [...projects].sort((a, b) => Number(b.featured ?? false) - Number(a.featured ?? false));
+---
+<Base
+  title="Références — Projets d'architecture à Orléans et en Centre-Val de Loire"
+  description="Découvrez les réalisations de CS Architecture : établissements scolaires, édifices publics, santé, tertiaire, industrie et design d'intérieur à Orléans et en Centre-Val de Loire."
+  overlayDark={false}
+  image={projects[0].hero}
+>
+  <!-- En-tête -->
+  <section class="shell pt-36 md:pt-48 pb-14">
+    <p class="mono mb-8" data-reveal>{projects.length} réalisations</p>
+    <SplitTitle as="h1" class="display t-hero max-w-[14ch]" lines={["Références", { text: "sélectionnées.", italic: true }]} />
+    <p class="t-lead text-[color:var(--color-muted)] max-w-2xl mt-10" data-reveal style="--reveal-delay:160ms">
+      Une architecture attentive aux usages, aux matières et au site. Du bâtiment public à l'aménagement intérieur, chaque projet est une réponse singulière.
+    </p>
+  </section>
+
+  <!-- Barre de filtres -->
+  <div class="sticky top-[72px] md:top-[84px] z-30 bg-[color:var(--color-paper)]/90 backdrop-blur-md border-y border-[color:var(--color-line)]">
+    <div class="shell flex items-center justify-between gap-6 py-4 overflow-x-auto">
+      <div class="flex items-center gap-1 md:gap-2 whitespace-nowrap" id="filters" role="tablist" aria-label="Filtrer les références">
+        <button class="filter-btn is-active" data-filter="all" role="tab" aria-selected="true">Tout</button>
+        {CATEGORIES.map((c) => (
+          <button class="filter-btn" data-filter={c} role="tab" aria-selected="false">{c}</button>
+        ))}
+      </div>
+      <div class="hidden md:flex items-center gap-2 shrink-0" aria-label="Affichage">
+        <button id="view-grid" class="view-btn is-active" aria-label="Vue grille" aria-pressed="true">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" stroke="currentColor"/><rect x="9" y="1" width="6" height="6" stroke="currentColor"/><rect x="1" y="9" width="6" height="6" stroke="currentColor"/><rect x="9" y="9" width="6" height="6" stroke="currentColor"/></svg>
+        </button>
+        <button id="view-list" class="view-btn" aria-label="Vue liste" aria-pressed="false">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="1" y1="3" x2="15" y2="3" stroke="currentColor"/><line x1="1" y1="8" x2="15" y2="8" stroke="currentColor"/><line x1="1" y1="13" x2="15" y2="13" stroke="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grille -->
+  <section class="shell py-16 md:py-24">
+    <div id="projects-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-14">
+      {ordered.map((p, i) => (
+        <div class="project-item" data-categories={p.categories.join("|")} style={`--reveal-delay:${(i % 3) * 80}ms`}>
+          <ProjectCard project={p} index={i} />
+        </div>
+      ))}
+    </div>
+
+    <!-- Vue liste (masquée par défaut) -->
+    <div id="projects-list" class="hidden">
+      {ordered.map((p, i) => (
+        <a href={`/references/${p.slug}/`} data-astro-prefetch data-cursor="Voir" class="list-item group grid grid-cols-12 items-center gap-4 py-6 border-t border-[color:var(--color-line)] last:border-b" data-categories={p.categories.join("|")}>
+          <span class="mono col-span-2 md:col-span-1 text-[color:var(--color-faint)]">{String(i + 1).padStart(2, "0")}</span>
+          <div class="col-span-10 md:col-span-4"><h3 class="font-serif text-2xl transition-transform duration-500 group-hover:translate-x-2">{p.title}</h3></div>
+          <span class="hidden md:block col-span-3 text-[color:var(--color-muted)] text-sm">{p.city}</span>
+          <span class="hidden md:block col-span-3 mono">{p.categories[0]}</span>
+          <span class="col-span-12 md:col-span-1 text-right mono text-[color:var(--color-sage)]">{p.year}</span>
+        </a>
+      ))}
+    </div>
+
+    <p id="no-result" class="hidden text-center text-[color:var(--color-muted)] py-20 font-serif text-2xl">Aucune référence dans cette catégorie.</p>
+  </section>
+</Base>
+
+<style>
+  .filter-btn { font-size: 0.8rem; letter-spacing: 0.01em; padding: 0.5rem 0.9rem; color: var(--color-muted); border: 1px solid transparent; transition: color .4s, border-color .4s, background .4s; }
+  .filter-btn:hover { color: var(--color-ink); }
+  .filter-btn.is-active { color: var(--color-paper); background: var(--color-ink); border-color: var(--color-ink); }
+  .view-btn { color: var(--color-faint); padding: 0.4rem; transition: color .3s; }
+  .view-btn.is-active { color: var(--color-ink); }
+  .project-item, .list-item { transition: opacity .5s var(--ease-out-expo); }
+  .project-item.hide, .list-item.hide { display: none; }
+</style>
+
+<script>
+  function initReferences() {
+    const filters = document.getElementById("filters");
+    if (!filters) return;
+    const btns = filters.querySelectorAll<HTMLButtonElement>(".filter-btn");
+    const items = document.querySelectorAll<HTMLElement>(".project-item, .list-item");
+    const noResult = document.getElementById("no-result");
+    const grid = document.getElementById("projects-grid");
+    const list = document.getElementById("projects-list");
+    const vGrid = document.getElementById("view-grid");
+    const vList = document.getElementById("view-list");
+
+    function apply(filter: string) {
+      let visible = 0;
+      items.forEach((el) => {
+        const cats = (el.dataset.categories || "").split("|");
+        const show = filter === "all" || cats.includes(filter);
+        el.classList.toggle("hide", !show);
+        if (show) visible++;
+      });
+      noResult?.classList.toggle("hidden", visible > 0);
+    }
+
+    btns.forEach((b) =>
+      b.addEventListener("click", () => {
+        btns.forEach((x) => { x.classList.remove("is-active"); x.setAttribute("aria-selected", "false"); });
+        b.classList.add("is-active"); b.setAttribute("aria-selected", "true");
+        apply(b.dataset.filter || "all");
+      })
+    );
+
+    function setView(mode: "grid" | "list") {
+      const isGrid = mode === "grid";
+      grid?.classList.toggle("hidden", !isGrid);
+      list?.classList.toggle("hidden", isGrid);
+      vGrid?.classList.toggle("is-active", isGrid);
+      vList?.classList.toggle("is-active", !isGrid);
+      vGrid?.setAttribute("aria-pressed", String(isGrid));
+      vList?.setAttribute("aria-pressed", String(!isGrid));
+    }
+    vGrid?.addEventListener("click", () => setView("grid"));
+    vList?.addEventListener("click", () => setView("list"));
+  }
+  document.addEventListener("astro:page-load", initReferences);
+</script>

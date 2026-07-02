@@ -1,0 +1,261 @@
+@import "tailwindcss";
+
+/* ============================================================
+   CS ARCHITECTURE — Direction artistique
+   Palette pierre / béton / anthracite, accent sauge.
+   Titres: Newsreader · Texte: Manrope · Annotations: IBM Plex Mono
+   ============================================================ */
+
+@theme {
+  /* Surfaces — code couleur d'origine : blanc / gris neutres */
+  --color-paper: #ffffff;      /* blanc principal */
+  --color-paper-2: #f5f5f4;    /* gris très clair (sections alternées) */
+  --color-sand: #eeedeb;       /* gris clair */
+  --color-stone: #e3e2df;      /* gris béton */
+  --color-line: #e6e5e2;       /* filets fins */
+
+  /* Encre — noir d'origine */
+  --color-ink: #171617;        /* noir CS Architecture */
+  --color-ink-2: #2a2a2b;
+  --color-muted: #6a6a68;      /* texte secondaire */
+  --color-faint: #9b9b98;      /* annotations grises */
+
+  /* Accent — rouge de la marque (croix du monogramme C+S) */
+  --color-sage: #E51A2F;       /* rouge accent */
+  --color-sage-deep: #b3131f;  /* rouge foncé */
+  --color-bronze: #E51A2F;
+
+  /* Typo */
+  --font-serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+
+  /* Rythme */
+  --spacing-gutter: 1.5rem;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Largeurs */
+  --breakpoint-3xl: 100rem;
+}
+
+/* -------- Base -------- */
+:root {
+  color-scheme: light;
+  --shell-max: 84rem; /* 1344px */
+}
+
+* { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-paper);
+}
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+  font-size: 1.0625rem;
+  letter-spacing: -0.005em;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--color-sage); color: var(--color-paper); }
+
+/* Component/helper classes live in the components layer so that Tailwind
+   utilities (absolute, w-full, hidden, …) always win on property conflicts. */
+@layer components {
+
+/* Typo helpers */
+.font-serif { font-family: var(--font-serif); font-weight: 400; }
+.display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+}
+.display-italic { font-style: italic; }
+
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
+/* Fluid type scale */
+.t-hero  { font-size: clamp(2.75rem, 8.5vw, 8rem); }
+.t-h1    { font-size: clamp(2.25rem, 5.5vw, 4.75rem); }
+.t-h2    { font-size: clamp(1.9rem, 4vw, 3.25rem); }
+.t-h3    { font-size: clamp(1.45rem, 2.4vw, 2rem); }
+.t-lead  { font-size: clamp(1.15rem, 1.7vw, 1.5rem); line-height: 1.5; }
+
+/* Layout shell */
+.shell {
+  width: 100%;
+  max-width: var(--shell-max);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 4.5rem);
+}
+.grid12 {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(1rem, 2.2vw, 1.75rem);
+}
+
+/* Hairline links */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -2px;
+  width: 100%; height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+.link-underline:hover::after { transform: scaleX(1); transform-origin: left; }
+
+/* Ligne / filet */
+.hairline { height: 1px; background: var(--color-line); border: 0; }
+
+/* Buttons — sobres, non arrondis */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.95rem 1.6rem;
+  border: 1px solid var(--color-ink);
+  color: var(--color-ink);
+  background: transparent;
+  transition: color 0.5s var(--ease-out-expo), background 0.5s var(--ease-out-expo);
+  position: relative;
+  overflow: hidden;
+}
+.btn > * { position: relative; z-index: 1; }
+.btn::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--color-ink);
+  transform: translateY(101%);
+  transition: transform 0.55s var(--ease-out-expo);
+}
+.btn:hover { color: var(--color-paper); }
+.btn:hover::before { transform: translateY(0); }
+.btn-light { border-color: var(--color-paper); color: var(--color-paper); }
+.btn-light::before { background: var(--color-paper); }
+.btn-light:hover { color: var(--color-ink); }
+
+/* Arrow inline */
+.arrow { transition: transform 0.5s var(--ease-out-expo); }
+.group:hover .arrow { transform: translateX(6px); }
+
+/* ---------- Reveal animations ----------
+   Gated behind .js so that, without JavaScript, all content is visible.
+   Reveal is driven by JS adding .is-in when the element enters the viewport. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1s var(--ease-out-expo), transform 1s var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal].is-in { opacity: 1; transform: none; }
+
+/* Line-by-line title reveal */
+.reveal-lines .line { display: block; overflow: hidden; }
+.js .reveal-lines .line > span {
+  display: block;
+  transform: translateY(110%);
+  transition: transform 1.05s var(--ease-out-expo);
+  transition-delay: var(--line-delay, 0ms);
+}
+.reveal-lines .line > span { display: block; }
+.reveal-lines.is-in .line > span { transform: none; }
+
+/* Image mask reveal */
+.mask-reveal { position: relative; overflow: hidden; }
+.js .mask-reveal img, .js .mask-reveal .media {
+  transform: scale(1.12);
+  transition: transform 1.6s var(--ease-out-expo);
+}
+.js .mask-reveal::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--color-paper);
+  transform-origin: bottom;
+  transition: transform 1.15s var(--ease-in-out-quart);
+  z-index: 2;
+}
+.mask-reveal.is-in::after { transform: scaleY(0); }
+.mask-reveal.is-in img, .mask-reveal.is-in .media { transform: scale(1); }
+
+/* Plan lines drawing (SVG) */
+.js .plan-line { stroke-dasharray: var(--len, 1200); stroke-dashoffset: var(--len, 1200); transition: stroke-dashoffset 2s var(--ease-out-expo); }
+.is-in .plan-line { stroke-dashoffset: 0; }
+
+/* Grille de fond fine (blueprint) */
+.blueprint {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--color-ink) 4%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-ink) 4%, transparent) 1px, transparent 1px);
+  background-size: clamp(48px, 6vw, 88px) clamp(48px, 6vw, 88px);
+}
+
+/* Custom cursor */
+.cursor-dot {
+  position: fixed; top: 0; left: 0;
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--color-ink);
+  pointer-events: none; z-index: 90;
+  transform: translate(-50%, -50%);
+  transition: width .4s var(--ease-out-expo), height .4s var(--ease-out-expo), background .4s, opacity .3s;
+  mix-blend-mode: difference;
+}
+.cursor-label {
+  position: fixed; top: 0; left: 0;
+  pointer-events: none; z-index: 90;
+  transform: translate(-50%, -50%) scale(0.6);
+  opacity: 0;
+  width: 84px; height: 84px; border-radius: 50%;
+  background: var(--color-sage); color: var(--color-paper);
+  display: grid; place-items: center;
+  font-family: var(--font-mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
+  transition: opacity .4s var(--ease-out-expo), transform .5s var(--ease-out-expo);
+}
+body.cursor-view .cursor-label { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+body.cursor-view .cursor-dot { opacity: 0; }
+@media (hover: none), (pointer: coarse) { .cursor-dot, .cursor-label { display: none !important; } }
+
+/* Marquee */
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-track { display: inline-flex; white-space: nowrap; animation: marquee 38s linear infinite; }
+
+} /* end @layer components */
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+  [data-reveal], .reveal-lines .line > span, .mask-reveal img { opacity: 1 !important; transform: none !important; }
+  .mask-reveal::after { display: none; }
+  .plan-line { stroke-dashoffset: 0 !important; }
+  .marquee-track { animation: none; }
+  .cursor-dot, .cursor-label { display: none !important; }
+}

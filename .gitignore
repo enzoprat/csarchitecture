@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.astro/
+
+# Environnement local
+.claude/
+.DS_Store
+*.log
+.env
+.env.*
