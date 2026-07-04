@@ -68,6 +68,18 @@ body {
 
 ::selection { background: var(--color-sage); color: var(--color-paper); }
 
+/* Accessible keyboard focus — visible ring for keyboard users only.
+   Kept un-layered so it always applies over component/utility styles. */
+:focus-visible {
+  outline: 2px solid var(--color-sage);
+  outline-offset: 3px;
+}
+.btn:focus-visible,
+.btn-light:focus-visible { outline-offset: 4px; }
+/* Dark sections: ensure the ring stays visible against ink backgrounds */
+.is-overlay :focus-visible,
+[class*="color-ink"] :focus-visible { outline-color: var(--color-sage); }
+
 /* Component/helper classes live in the components layer so that Tailwind
    utilities (absolute, w-full, hidden, …) always win on property conflicts. */
 @layer components {
