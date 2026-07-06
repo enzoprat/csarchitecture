@@ -9,17 +9,17 @@ import { withBase } from "../../lib/url";
 const ordered = [...projects].sort((a, b) => Number(b.featured ?? false) - Number(a.featured ?? false));
 ---
 <Base
-  title="Références — Projets d'architecture à Orléans et en Centre-Val de Loire"
-  description="Découvrez les réalisations de CS Architecture : établissements scolaires, édifices publics, santé, tertiaire, industrie et design d'intérieur à Orléans et en Centre-Val de Loire."
+  title="Réalisations — Muséographie, scénographie & expositions"
+  description="Découvrez les réalisations de CS Design : musées, expositions, centres d'interprétation, espaces tourisme, signalétique et mobilier sur-mesure, partout en France."
   overlayDark={false}
   image={projects[0].hero}
 >
   <!-- En-tête -->
   <section class="shell pt-36 md:pt-48 pb-14">
     <p class="mono mb-8" data-reveal>{projects.length} réalisations</p>
-    <SplitTitle as="h1" class="display t-hero max-w-[14ch]" lines={["Références", { text: "sélectionnées.", italic: true }]} />
+    <SplitTitle as="h1" class="display t-hero max-w-[14ch]" lines={["Nos", { text: "réalisations.", italic: true }]} />
     <p class="t-lead text-[color:var(--color-muted)] max-w-2xl mt-10" data-reveal style="--reveal-delay:160ms">
-      Une architecture attentive aux usages, aux matières et au site. Du bâtiment public à l'aménagement intérieur, chaque projet est une réponse singulière.
+      Musées, expositions, centres d'interprétation et espaces d'accueil : chaque projet est une réponse singulière à un lieu, un récit et des publics.
     </p>
   </section>
 

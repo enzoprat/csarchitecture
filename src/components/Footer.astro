@@ -1,5 +1,5 @@
 ---
-import { nav, site } from "../data/site";
+import { nav, site, social } from "../data/site";
 import { withBase } from "../lib/url";
 const year = new Date().getFullYear();
 ---
@@ -9,9 +9,9 @@ const year = new Date().getFullYear();
     <!-- CTA -->
     <div class="grid12 items-end gap-y-10 pb-16 md:pb-24 border-b border-white/10">
       <div class="col-span-12 lg:col-span-8">
-        <p class="mono text-white/40 mb-6">Un projet, une intention</p>
+        <p class="mono text-white/40 mb-6">Un lieu, un récit à mettre en espace</p>
         <a href={withBase("/contact/")} class="group block" data-astro-prefetch>
-          <span class="display t-h1 block leading-[0.95]">Parlons<br /><span class="display-italic text-[color:var(--color-sage)]">d'un projet.</span></span>
+          <span class="display t-h1 block leading-[0.95]">Parlons<br /><span class="display-italic text-[color:var(--color-sage)]">de votre projet.</span></span>
         </a>
       </div>
       <div class="col-span-12 lg:col-span-4 lg:text-right">
@@ -25,10 +25,18 @@ const year = new Date().getFullYear();
     <!-- Colonnes -->
     <div class="grid12 gap-y-12 pt-14">
       <div class="col-span-12 md:col-span-5">
-        <img src={withBase("/images/brand/logo-cs-color.png")} alt="CS Architecture" width="1181" height="544" class="h-14 w-auto" />
+        <div class="flex items-baseline gap-[0.55rem]">
+          <span class="font-serif text-[1.9rem] leading-none tracking-[-0.02em]">CS<span class="text-[color:var(--color-sage)]">.</span></span>
+          <span class="mono text-[0.66rem] tracking-[0.32em] uppercase text-white/60">Design</span>
+        </div>
         <p class="text-white/50 text-sm mt-4 max-w-xs leading-relaxed">
-          Agence d'architecture et de design d'intérieur à Orléans. Conception, réhabilitation et maquette numérique, du bâtiment public au privé.
+          Agence pluridisciplinaire de muséographie, scénographie et aménagement d'espaces recevant du public. Des musées aux centres d'interprétation, du concept à la réalisation.
         </p>
+        <div class="flex items-center gap-5 mt-6">
+          <a href={social.instagram} target="_blank" rel="noopener" class="mono text-white/45 hover:text-white transition-colors link-underline">Instagram</a>
+          <a href={social.facebook} target="_blank" rel="noopener" class="mono text-white/45 hover:text-white transition-colors link-underline">Facebook</a>
+          <a href={social.linkedin} target="_blank" rel="noopener" class="mono text-white/45 hover:text-white transition-colors link-underline">LinkedIn</a>
+        </div>
       </div>
       <nav class="col-span-6 md:col-span-3" aria-label="Pied de page">
         <span class="mono text-white/35 block mb-5">Navigation</span>
@@ -49,8 +57,8 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 pt-14 mt-14 border-t border-white/10">
-      <p class="mono text-white/35">© {year} CS Architecture — Architecte DPLG Orléans</p>
-      <p class="mono text-white/35">Architecture durable · BIM · Design d'intérieur</p>
+      <p class="mono text-white/35">© {year} {site.legalName} — SIRET {site.siret}</p>
+      <p class="mono text-white/35">Muséographie · Scénographie · Aménagement d'espaces</p>
     </div>
   </div>
 </footer>

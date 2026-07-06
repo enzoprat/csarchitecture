@@ -15,15 +15,15 @@
   --color-line: #e6e5e2;       /* filets fins */
 
   /* Encre — noir d'origine */
-  --color-ink: #171617;        /* noir CS Architecture */
+  --color-ink: #171617;        /* noir CS Design */
   --color-ink-2: #2a2a2b;
   --color-muted: #6a6a68;      /* texte secondaire */
   --color-faint: #9b9b98;      /* annotations grises */
 
-  /* Accent — rouge de la marque (croix du monogramme C+S) */
-  --color-sage: #E51A2F;       /* rouge accent */
-  --color-sage-deep: #b3131f;  /* rouge foncé */
-  --color-bronze: #E51A2F;
+  /* Accent — rose-rouge de la marque CS Design */
+  --color-sage: #e22047;       /* accent CS Design */
+  --color-sage-deep: #b3193a;  /* accent foncé */
+  --color-bronze: #e22047;
 
   /* Typo */
   --font-serif: "Newsreader", Georgia, "Times New Roman", serif;

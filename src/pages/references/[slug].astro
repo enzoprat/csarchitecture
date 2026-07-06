@@ -29,12 +29,12 @@ const projectSchema = {
   about: p.program,
   locationCreated: p.city,
   dateCreated: p.year,
-  creator: { "@type": "Organization", name: "CS Architecture" },
+  creator: { "@type": "Organization", name: "CS Design" },
 };
 ---
 <Base
   title={`${p.title} — ${p.city}`}
-  description={`${p.title} à ${p.city} : ${p.excerpt} Projet ${p.categories[0].toLowerCase()} conçu par CS Architecture, architecte à Orléans.`}
+  description={`${p.title} à ${p.city} : ${p.excerpt} Projet de ${p.categories[0].toLowerCase()} conçu et réalisé par CS Design, agence de muséographie et scénographie.`}
   overlayDark={true}
   image={p.hero}
 >
@@ -73,7 +73,7 @@ const projectSchema = {
   <!-- Galerie 1 -->
   <section class="shell pb-8">
     <div class="mask-reveal aspect-[16/9] bg-[color:var(--color-stone)] overflow-hidden">
-      <img src={withBase(p.gallery[0])} alt={`${p.title} — vue 1`} loading="lazy" class="w-full h-full object-cover" data-parallax="0.04" />
+      <img src={withBase(p.gallery[1] ?? p.hero)} alt={`${p.title} — vue 1`} loading="lazy" class="w-full h-full object-cover" data-parallax="0.04" />
     </div>
   </section>
 
@@ -85,7 +85,7 @@ const projectSchema = {
         <p class="t-lead text-[color:var(--color-ink)] leading-relaxed" data-reveal style="--reveal-delay:80ms">{p.context}</p>
       </div>
       <div class="col-span-12 md:col-span-6 lg:col-span-5 lg:col-start-8">
-        <p class="mono mb-6" data-reveal>Réponse architecturale</p>
+        <p class="mono mb-6" data-reveal>Réponse scénographique</p>
         <p class="t-lead text-[color:var(--color-muted)] leading-relaxed" data-reveal style="--reveal-delay:80ms">{p.response}</p>
       </div>
     </div>
@@ -94,13 +94,21 @@ const projectSchema = {
   <!-- Galerie 2 (deux images) -->
   <section class="shell pb-16 md:pb-24 grid grid-cols-1 md:grid-cols-12 gap-6">
     <div class="md:col-span-7 mask-reveal aspect-[4/3] bg-[color:var(--color-stone)] overflow-hidden">
-      <img src={withBase(p.gallery[1] ?? p.hero)} alt={`${p.title} — vue 2`} loading="lazy" class="w-full h-full object-cover" />
+      <img src={withBase(p.gallery[2] ?? p.hero)} alt={`${p.title} — vue 2`} loading="lazy" class="w-full h-full object-cover" />
     </div>
     <div class="md:col-span-5 flex flex-col justify-center bg-[color:var(--color-paper-2)] p-8 md:p-10">
-      <p class="mono mb-6">Matières, usages, lumière</p>
+      <p class="mono mb-6">Matières, lumière & détails</p>
       <p class="font-serif text-xl md:text-2xl leading-snug">{p.matter}</p>
     </div>
   </section>
+
+  {p.gallery[3] && (
+    <section class="shell pb-16 md:pb-24">
+      <div class="mask-reveal aspect-[16/9] bg-[color:var(--color-stone)] overflow-hidden">
+        <img src={withBase(p.gallery[3])} alt={`${p.title} — vue 3`} loading="lazy" class="w-full h-full object-cover" data-parallax="0.04" />
+      </div>
+    </section>
+  )}
 
   <!-- Données clés -->
   <section class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] py-20 md:py-28">
@@ -130,6 +138,6 @@ const projectSchema = {
   </nav>
 
   <div class="shell pb-24 text-center">
-    <a href={withBase("/references/")} class="btn group" data-astro-prefetch><span>Toutes les références</span></a>
+    <a href={withBase("/references/")} class="btn group" data-astro-prefetch><span>Toutes les réalisations</span></a>
   </div>
 </Base>

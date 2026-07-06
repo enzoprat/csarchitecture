@@ -12,9 +12,9 @@ const path = Astro.url.pathname;
 >
   <div class="header-line absolute inset-x-0 bottom-0 h-px bg-[color:var(--color-line)] opacity-0 transition-opacity duration-500"></div>
   <div class="shell flex items-center justify-between h-[72px] md:h-[84px]">
-    <a href={withBase("/")} class="header-brand group relative z-10 flex items-center" aria-label="CS Architecture — Accueil" data-astro-prefetch>
-      <img src={withBase("/images/brand/logo-cs-noir.png")} alt="CS Architecture — Architectes à Orléans" width="1771" height="816" class="logo-dark h-11 md:h-14 w-auto" />
-      <img src={withBase("/images/brand/logo-cs-color.png")} alt="CS Architecture — Architectes à Orléans" width="1181" height="544" class="logo-light h-11 md:h-14 w-auto" />
+    <a href={withBase("/")} class="header-brand group relative z-10 flex items-baseline gap-[0.55rem]" aria-label="CS Design — Accueil" data-astro-prefetch>
+      <span class="font-serif text-[1.6rem] md:text-[1.75rem] leading-none tracking-[-0.02em]">CS<span class="text-[color:var(--color-sage)]">.</span></span>
+      <span class="brand-word text-[0.6rem] md:text-[0.64rem] tracking-[0.32em] uppercase pb-[2px]" style="font-family:var(--font-mono);">Design</span>
     </a>
 
     <nav class="hidden lg:flex items-center gap-9" aria-label="Navigation principale">
@@ -59,13 +59,8 @@ const path = Astro.url.pathname;
 </div>
 
 <style>
-  /* Logo : version noire sur fond clair, version blanche sur fond sombre */
-  .logo-light { display: none; }
-  #site-header.is-overlay:not(.scrolled) .logo-dark { display: none; }
-  #site-header.is-overlay:not(.scrolled) .logo-light { display: inline-block; }
-  body.menu-open #site-header .logo-dark { display: none; }
-  body.menu-open #site-header .logo-light { display: inline-block; }
-
+  .brand-word { color: color-mix(in srgb, currentColor 62%, transparent); transition: color 0.5s var(--ease-out-expo); }
+  .header-brand:hover .brand-word { color: currentColor; }
   #site-header.is-overlay { color: var(--color-paper); }
   #site-header.is-solid { color: var(--color-ink); background: color-mix(in srgb, var(--color-paper) 88%, transparent); backdrop-filter: blur(10px); }
   #site-header.is-solid .header-line { opacity: 1; }

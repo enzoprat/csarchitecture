@@ -1,0 +1,133 @@
+---
+import Base from "../layouts/Base.astro";
+import SplitTitle from "../components/SplitTitle.astro";
+import { withBase } from "../lib/url";
+
+const services = [
+  {
+    n: "01",
+    t: "Scénographie d'exposition",
+    img: "/images/projects/plongee-au-coeur-des-canyons-hero.jpg",
+    d: "Nous mettons en récit un propos dans l'espace : parcours, séquences, rythme et points forts. La scénographie donne au visiteur une expérience lisible et sensible, de la première salle à la dernière.",
+    tags: ["Parcours", "Séquençage", "Immersion", "Médiation"],
+  },
+  {
+    n: "02",
+    t: "Muséographie",
+    img: "/images/projects/chateau-de-foix-hero.jpg",
+    d: "Nous traduisons un contenu scientifique, historique ou patrimonial en une visite accessible. Hiérarchie des messages, niveaux de lecture et dispositifs de médiation s'adressent à tous les publics.",
+    tags: ["Contenus", "Accessibilité", "Niveaux de lecture", "Publics"],
+  },
+  {
+    n: "03",
+    t: "Illustration & modélisation 3D",
+    img: "/images/projects/salon-occitanie-innov-2023-1.jpg",
+    d: "Nous donnons à voir le projet avant sa réalisation. Croquis, plans et images 3D permettent d'éprouver l'espace, de valider les intentions et de partager une vision commune avec le maître d'ouvrage.",
+    tags: ["Croquis", "Plans", "Images 3D", "Validation"],
+  },
+  {
+    n: "04",
+    t: "Design de mobilier & agencement",
+    img: "/images/projects/office-tourisme-grand-tourmalet-hero.jpg",
+    d: "Nous dessinons vitrines, socles, banques d'accueil et dispositifs interactifs sur-mesure, pensés pour le lieu, son architecture et l'usage intensif d'un espace public.",
+    tags: ["Vitrines", "Socles", "Mobilier", "Interactifs"],
+  },
+  {
+    n: "05",
+    t: "Étude d'éclairage",
+    img: "/images/projects/centre-histoire-resistance-deportation-ariege-hero.jpg",
+    d: "Nous sculptons la lumière pour révéler les œuvres, guider le regard et créer l'ambiance juste. L'éclairage protège les pièces fragiles autant qu'il met en scène le propos.",
+    tags: ["Ambiance", "Mise en valeur", "Conservation", "Parcours"],
+  },
+  {
+    n: "06",
+    t: "Création graphique & signalétique",
+    img: "/images/projects/mediatheque-chalucet-toulon-hero.jpg",
+    d: "Textes, images, cartographies et signalétique : nous concevons une identité graphique complète qui structure la lecture, oriente les visiteurs et incarne l'esprit du lieu.",
+    tags: ["Identité", "Textes", "Cartographie", "Orientation"],
+  },
+  {
+    n: "07",
+    t: "Suivi, pilotage & coordination",
+    img: "/images/projects/gare-robert-doisneau-1.jpg",
+    d: "Nous pilotons la fabrication et le montage sur site (OPC). Coordination des fabricants, respect du calendrier et du budget, contrôle qualité : jusqu'à l'ouverture au public.",
+    tags: ["OPC", "Fabrication", "Montage", "Budget & délais"],
+  },
+];
+
+const process = [
+  { n: "01", t: "Écoute & immersion", d: "Comprendre le lieu, le récit, les collections et les publics visés." },
+  { n: "02", t: "Concept & intention scénographique", d: "Définir un parti pris narratif et spatial qui donne du sens à la visite." },
+  { n: "03", t: "Muséographie & scénographie", d: "Dessiner le parcours, ses séquences et ses dispositifs de médiation." },
+  { n: "04", t: "Illustration & modélisation 3D", d: "Éprouver et partager le projet en volume avant toute fabrication." },
+  { n: "05", t: "Mobilier, graphisme & éclairage", d: "Concevoir sur-mesure chaque élément qui compose l'expérience." },
+  { n: "06", t: "Suivi, pilotage & coordination", d: "Coordonner les fabricants et piloter le montage sur site (OPC)." },
+  { n: "07", t: "Ouverture au public", d: "Livrer un espace vivant, cohérent et prêt à accueillir les visiteurs." },
+];
+---
+<Base
+  title="Savoir-faire — Muséographie, scénographie & mobilier sur-mesure"
+  description="Les sept savoir-faire de CS Design : scénographie d'exposition, muséographie, modélisation 3D, mobilier, éclairage, création graphique, pilotage et coordination (OPC)."
+  overlayDark={false}
+  image="/images/projects/plongee-au-coeur-des-canyons-hero.jpg"
+>
+  <!-- Hero -->
+  <section class="shell pt-36 md:pt-48 pb-16">
+    <p class="mono mb-8" data-reveal>Savoir-faire</p>
+    <SplitTitle as="h1" class="display t-hero max-w-[16ch]" lines={["Sept métiers,", { text: "un seul", italic: true }, { text: "interlocuteur.", accent: true }]} />
+    <p class="t-lead text-[color:var(--color-muted)] max-w-2xl mt-10" data-reveal style="--reveal-delay:140ms">
+      De la conception au montage, CS Design réunit en interne toutes les compétences d'un projet muséographique. Une chaîne cohérente, sans rupture entre l'idée et sa réalisation.
+    </p>
+  </section>
+
+  <!-- Services détaillés -->
+  <section class="shell pb-8">
+    {services.map((s, i) => (
+      <div class={`grid12 gap-y-8 items-center py-16 md:py-24 border-t border-[color:var(--color-line)] ${i % 2 === 1 ? "md:[direction:rtl]" : ""}`}>
+        <div class="col-span-12 md:col-span-6 [direction:ltr]">
+          <div class="mask-reveal aspect-[4/3] bg-[color:var(--color-stone)] overflow-hidden">
+            <img src={withBase(s.img)} alt={s.t} loading="lazy" class="w-full h-full object-cover" data-parallax="0.05" />
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-5 md:col-start-8 [direction:ltr]">
+          <span class="mono text-[color:var(--color-sage)]" data-reveal>{s.n}</span>
+          <SplitTitle as="h2" class="display t-h2 mt-4" lines={[s.t]} />
+          <p class="t-lead text-[color:var(--color-muted)] mt-6 leading-relaxed" data-reveal style="--reveal-delay:120ms">{s.d}</p>
+          <ul class="flex flex-wrap gap-x-6 gap-y-2 mt-8" data-reveal style="--reveal-delay:200ms">
+            {s.tags.map((tag) => (
+              <li class="mono flex items-center gap-2 text-[color:var(--color-faint)]"><span class="h-1 w-1 rounded-full bg-[color:var(--color-sage)]"></span>{tag}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <!-- Méthode -->
+  <section class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] py-24 md:py-32">
+    <div class="shell">
+      <div class="max-w-2xl mb-16 md:mb-20">
+        <p class="mono text-[color:var(--color-paper)]/50 mb-6" data-reveal>Notre méthode</p>
+        <SplitTitle as="h2" class="display t-h1" lines={["Du croquis", { text: "à l'ouverture.", italic: true }]} />
+      </div>
+      <ol class="border-l border-white/15">
+        {process.map((step, i) => (
+          <li class="relative pl-8 md:pl-0 md:grid md:grid-cols-12 md:gap-6 py-8 md:py-10 border-b border-white/10 group" data-reveal style={`--reveal-delay:${i * 60}ms`}>
+            <span class="absolute -left-[5px] top-10 md:hidden h-2 w-2 rounded-full bg-[color:var(--color-sage)]"></span>
+            <span class="mono text-[color:var(--color-sage)] md:col-span-1">{step.n}</span>
+            <h3 class="font-serif text-[clamp(1.5rem,2.6vw,2.2rem)] leading-tight md:col-span-6 mt-1 md:mt-0 transition-transform duration-700 [transition-timing-function:var(--ease-out-expo)] group-hover:md:translate-x-2">{step.t}</h3>
+            <p class="text-[color:var(--color-paper)]/60 md:col-span-5 mt-2 md:mt-1 leading-relaxed">{step.d}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="shell py-24 md:py-32 text-center">
+    <SplitTitle as="h2" class="display t-h1 max-w-[18ch] mx-auto" lines={["Un projet", { text: "à mettre en espace ?", italic: true }]} />
+    <div class="mt-10 flex justify-center">
+      <a href={withBase("/contact/")} class="btn group" data-astro-prefetch><span>Prendre contact</span><span class="arrow">→</span></a>
+    </div>
+  </section>
+</Base>

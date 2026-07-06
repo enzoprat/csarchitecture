@@ -4,15 +4,15 @@ import SplitTitle from "../components/SplitTitle.astro";
 import { site } from "../data/site";
 ---
 <Base
-  title="Contact — CS Architecture, architecte à Orléans"
-  description="Parlons de votre projet. Contactez CS Architecture, agence d'architecture et de design d'intérieur à Orléans : 26 avenue de Saint-Mesmin, 45100 Orléans."
+  title="Contact — CS Design, muséographie & scénographie"
+  description="Parlons de votre projet. Contactez CS Design, agence de muséographie et de scénographie : 2 avenue du Cami Neou, 82210 Saint-Nicolas-de-la-Grave."
   overlayDark={false}
 >
   <section class="shell pt-36 md:pt-48 pb-16">
     <p class="mono mb-8" data-reveal>Contact</p>
-    <SplitTitle as="h1" class="display t-hero max-w-[14ch]" lines={["Parlons", { text: "d'un projet.", italic: true }]} />
+    <SplitTitle as="h1" class="display t-hero max-w-[14ch]" lines={["Parlons", { text: "de votre projet.", italic: true }]} />
     <p class="t-lead text-[color:var(--color-muted)] max-w-2xl mt-10" data-reveal style="--reveal-delay:140ms">
-      Une intention, un site, un programme : dites-nous en quelques mots ce qui vous amène. Nous vous répondons avec attention.
+      Un lieu, un récit, une collection, des publics : dites-nous en quelques mots ce qui vous amène. Nous vous répondons avec attention.
     </p>
   </section>
 
@@ -36,17 +36,19 @@ import { site } from "../data/site";
           <div class="field">
             <label for="type" class="mono block mb-3">Nature du projet</label>
             <select id="type" name="type" class="input">
-              <option>Construction neuve</option>
-              <option>Réhabilitation</option>
-              <option>Rénovation énergétique</option>
-              <option>Design d'intérieur</option>
+              <option>Musée ou exposition permanente</option>
+              <option>Exposition temporaire ou itinérante</option>
+              <option>Centre d'interprétation</option>
+              <option>Espace tourisme / accueil</option>
+              <option>Signalétique &amp; graphisme</option>
+              <option>Mobilier sur-mesure</option>
               <option>Autre</option>
             </select>
           </div>
         </div>
         <div class="field">
           <label for="message" class="mono block mb-3">Votre projet *</label>
-          <textarea id="message" name="message" rows="5" required class="input resize-none" placeholder="Site, programme, surface, intentions…"></textarea>
+          <textarea id="message" name="message" rows="5" required class="input resize-none" placeholder="Lieu, contenu, surface, calendrier, intentions…"></textarea>
         </div>
         <div class="flex flex-col sm:flex-row sm:items-center gap-6">
           <button type="submit" class="btn group"><span>Envoyer le message</span><span class="arrow">→</span></button>
@@ -73,8 +75,8 @@ import { site } from "../data/site";
         <a href={`mailto:${site.email}`} class="font-serif text-xl link-underline">{site.email}</a>
       </div>
       <div>
-        <span class="mono block mb-4">Horaires</span>
-        <p class="text-[color:var(--color-muted)]">Du lundi au vendredi<br />9h – 12h30 · 14h – 18h</p>
+        <span class="mono block mb-4">Interventions</span>
+        <p class="text-[color:var(--color-muted)]">Occitanie, PACA, Nouvelle-Aquitaine<br />et partout en France</p>
       </div>
     </aside>
   </section>
@@ -82,11 +84,11 @@ import { site } from "../data/site";
   <!-- Carte stylisée -->
   <section class="shell pb-24 md:pb-32">
     <a
-      href="https://www.openstreetmap.org/?mlat=47.882&mlon=1.888#map=15/47.882/1.888"
+      href="https://www.openstreetmap.org/?mlat=44.066&mlon=1.024#map=15/44.066/1.024"
       target="_blank" rel="noopener"
       data-cursor="Ouvrir"
       class="group relative block aspect-[21/9] bg-[color:var(--color-paper-2)] overflow-hidden border border-[color:var(--color-line)]"
-      aria-label="Voir CS Architecture sur la carte"
+      aria-label="Voir CS Design sur la carte"
     >
       <div class="blueprint absolute inset-0 opacity-60"></div>
       <!-- Routes stylisées -->
@@ -98,10 +100,10 @@ import { site } from "../data/site";
       </svg>
       <!-- Pin -->
       <div class="absolute left-1/2 top-[46%] -translate-x-1/2 -translate-y-full flex flex-col items-center">
-        <div class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-4 py-2 mono whitespace-nowrap">CS Architecture</div>
+        <div class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-4 py-2 mono whitespace-nowrap">CS Design</div>
         <span class="mt-2 h-3 w-3 rounded-full bg-[color:var(--color-sage)] ring-4 ring-[color:var(--color-sage)]/25 group-hover:scale-125 transition-transform duration-500"></span>
       </div>
-      <span class="absolute bottom-4 right-5 mono text-[color:var(--color-faint)]">47.88° N · 1.89° E — Orléans</span>
+      <span class="absolute bottom-4 right-5 mono text-[color:var(--color-faint)]">44.07° N · 1.02° E — Saint-Nicolas-de-la-Grave</span>
     </a>
   </section>
 </Base>
@@ -137,7 +139,7 @@ import { site } from "../data/site";
         `Nom : ${data.get("name")}\nEmail : ${data.get("email")}\nTéléphone : ${data.get("phone") || "—"}\nNature : ${data.get("type")}\n\n${data.get("message")}`
       );
       if (status) status.textContent = "Ouverture de votre messagerie…";
-      window.location.href = `mailto:contact@csarchitecture.fr?subject=${subject}&body=${body}`;
+      window.location.href = `mailto:cl.simonet@csdesign.fr?subject=${subject}&body=${body}`;
     });
   }
   document.addEventListener("astro:page-load", initContact);

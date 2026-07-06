@@ -2,40 +2,70 @@
 import Base from "../layouts/Base.astro";
 import SplitTitle from "../components/SplitTitle.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-import { featuredProjects, projects } from "../data/projects";
-import { site } from "../data/site";
+import { featuredProjects } from "../data/projects";
 import { withBase } from "../lib/url";
 
 const selection = featuredProjects.slice(0, 4);
-const markets = [
-  "Marchés publics",
-  "Collectivités",
-  "Enseignement",
-  "Santé",
-  "Tertiaire",
-  "Industrie",
+
+const clients = [
+  "Musée Champollion, Figeac",
+  "Parc national des Calanques",
+  "Parc national du Mercantour",
+  "Bibliothèques de Toulouse",
+  "Ville de Marseille",
+  "Département de l'Ariège",
+  "Centre des monuments nationaux",
+  "CC du Pays de Fénelon",
+  "Ville de Blagnac",
+  "Ville de Muret",
+  "Ville de Toulon",
+  "Ville de Cauterets",
+  "OT Grand Tourmalet – Pic du Midi",
+  "Atelier Robert Doisneau, Paris",
+  "CA Hérault Méditerranée",
 ];
+
+const domains = [
+  "Musées",
+  "Expositions",
+  "Centres d'interprétation",
+  "Espaces tourisme",
+  "Scénographie",
+  "Signalétique",
+  "Mobilier sur-mesure",
+];
+
+const services = [
+  { n: "01", t: "Scénographie d'exposition", d: "Mettre en récit un propos dans l'espace : séquences, parcours et rythme de visite." },
+  { n: "02", t: "Muséographie", d: "Traduire un contenu scientifique ou patrimonial en une expérience accessible à tous les publics." },
+  { n: "03", t: "Illustration & modélisation 3D", d: "Donner à voir le projet avant sa réalisation, de l'intention au photoréalisme." },
+  { n: "04", t: "Design de mobilier & agencement", d: "Concevoir vitrines, socles et dispositifs sur-mesure, dessinés pour le lieu." },
+  { n: "05", t: "Étude d'éclairage", d: "Sculpter la lumière pour révéler les œuvres et guider le regard." },
+  { n: "06", t: "Création graphique & signalétique", d: "Textes, images et orientation : une identité graphique au service du parcours." },
+  { n: "07", t: "Suivi, pilotage & coordination", d: "Piloter la fabrication et le montage (OPC) jusqu'à l'ouverture au public." },
+];
+
 const process = [
-  { n: "01", t: "Écoute & analyse du site", d: "Comprendre le lieu, ses contraintes, ses usages et les attentes du maître d'ouvrage." },
-  { n: "02", t: "Esquisse & intentions", d: "Formuler une réponse architecturale claire, dessinée à partir du site et du programme." },
-  { n: "03", t: "Conception technique", d: "Développer le projet avec les bureaux d'études, au service de l'esthétique et de la performance." },
-  { n: "04", t: "Maquette numérique & coordination", d: "Fiabiliser les études en BIM, coordonner les maquettes et anticiper la mise en œuvre." },
-  { n: "05", t: "Consultation des entreprises", d: "Choisir les entreprises et préparer un chantier maîtrisé." },
-  { n: "06", t: "Suivi de chantier", d: "Accompagner la réalisation, garantir la qualité et le respect des intentions." },
-  { n: "07", t: "Livraison & usages", d: "Remettre un bâtiment durable, cohérent et agréable à vivre." },
+  { n: "01", t: "Écoute & immersion", d: "Comprendre le lieu, le récit, les collections et les publics visés." },
+  { n: "02", t: "Concept & intention scénographique", d: "Définir un parti pris narratif et spatial qui donne du sens à la visite." },
+  { n: "03", t: "Muséographie & scénographie", d: "Dessiner le parcours, ses séquences et ses dispositifs de médiation." },
+  { n: "04", t: "Illustration & modélisation 3D", d: "Éprouver et partager le projet en volume avant toute fabrication." },
+  { n: "05", t: "Mobilier, graphisme & éclairage", d: "Concevoir sur-mesure chaque élément qui compose l'expérience." },
+  { n: "06", t: "Suivi, pilotage & coordination", d: "Coordonner les fabricants et piloter le montage sur site (OPC)." },
+  { n: "07", t: "Ouverture au public", d: "Livrer un espace vivant, cohérent et prêt à accueillir les visiteurs." },
 ];
 ---
 <Base
-  title="CS Architecture — Architecte à Orléans, architecture durable, design d'intérieur & BIM"
-  description="Agence d'architecture et de design d'intérieur à Orléans. CS Architecture conçoit, réhabilite et transforme des bâtiments publics, tertiaires et privés avec une approche durable et la maquette numérique BIM."
+  title="CS Design — Muséographie, scénographie & aménagement d'espaces"
+  description="Agence pluridisciplinaire de muséographie et scénographie. CS Design conçoit et réalise musées, expositions, centres d'interprétation et espaces tourisme, du concept à l'ouverture au public."
   overlayDark={true}
-  image="/images/site/hero-home.jpg"
+  image="/images/site/home-hero.jpg"
 >
   <!-- ============ 1 · HERO ============ -->
   <section class="relative isolate min-h-[100svh] flex flex-col justify-end text-[color:var(--color-paper)] overflow-hidden">
     <div class="absolute inset-0 z-0">
       <div class="mask-reveal is-in w-full h-full">
-        <img src={withBase("/images/site/hero-home.jpg")} alt="Réalisation architecturale CS Architecture à Orléans" data-parallax="0.08" class="w-full h-[112%] object-cover" fetchpriority="high" />
+        <img src={withBase("/images/site/home-hero.jpg")} alt="Scénographie muséale conçue par CS Design" data-parallax="0.08" class="w-full h-[112%] object-cover" fetchpriority="high" />
       </div>
       <div class="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/85 via-[color:var(--color-ink)]/25 to-[color:var(--color-ink)]/50"></div>
       <div class="blueprint absolute inset-0 opacity-[0.12]"></div>
@@ -43,35 +73,35 @@ const process = [
 
     <div class="shell relative z-10 pb-16 md:pb-24 pt-32 w-full">
       <div class="flex items-center gap-4 mb-8" data-reveal>
-        <span class="mono text-[color:var(--color-paper)]/70">Orléans · Centre-Val de Loire</span>
+        <span class="mono text-[color:var(--color-paper)]/70">Occitanie · France</span>
         <span class="h-px w-16 bg-[color:var(--color-paper)]/30"></span>
-        <span class="mono text-[color:var(--color-paper)]/70">Depuis 1995</span>
+        <span class="mono text-[color:var(--color-paper)]/70">Muséographie & scénographie</span>
       </div>
 
       <SplitTitle
         as="h1"
         class="display t-hero max-w-[16ch]"
         lines={[
-          "Architecture",
-          { text: "durable,", accent: true },
-          "design d'intérieur",
-          { text: "& maquette numérique", italic: true },
+          "Mettre en",
+          { text: "espace,", accent: true },
+          "mettre en",
+          { text: "récit.", italic: true },
         ]}
       />
 
       <div class="grid12 mt-12 items-end gap-y-8">
         <p class="col-span-12 md:col-span-6 lg:col-span-5 t-lead text-[color:var(--color-paper)]/85" data-reveal style="--reveal-delay:200ms">
-          Depuis Orléans, CS Architecture conçoit, réhabilite et transforme des lieux publics, tertiaires et privés avec une approche globale du bâtiment, de l'usage et de l'environnement.
+          Agence pluridisciplinaire de muséographie et d'aménagement d'espaces recevant du public, CS Design conçoit et réalise vos musées, expositions et centres d'interprétation, du premier croquis à l'ouverture au public.
         </p>
         <div class="col-span-12 md:col-span-6 lg:col-span-7 flex flex-wrap gap-4 md:justify-end" data-reveal style="--reveal-delay:320ms">
-          <a href={withBase("/references/")} class="btn btn-light group" data-astro-prefetch><span>Explorer les références</span><span class="arrow">→</span></a>
-          <a href={withBase("/agence/")} class="btn btn-light group" data-astro-prefetch><span>Découvrir l'agence</span></a>
+          <a href={withBase("/references/")} class="btn btn-light group" data-astro-prefetch><span>Voir les réalisations</span><span class="arrow">→</span></a>
+          <a href={withBase("/savoir-faire/")} class="btn btn-light group" data-astro-prefetch><span>Nos savoir-faire</span></a>
         </div>
       </div>
     </div>
 
     <div class="shell relative z-10 pb-6 hidden md:flex justify-between items-center mono text-[color:var(--color-paper)]/50">
-      <span>47.9° N · 1.9° E</span>
+      <span>44.1° N · 1.0° E</span>
       <span class="flex items-center gap-2">Défiler <span class="inline-block animate-bounce">↓</span></span>
     </div>
   </section>
@@ -84,19 +114,19 @@ const process = [
       class="display t-h1 max-w-[20ch]"
       stagger={70}
       lines={[
-        "Concevoir un bâtiment,",
-        { text: "c'est composer avec un site,", italic: true },
-        "des usages, une lumière,",
-        "une matière et une",
-        { text: "responsabilité.", accent: true },
+        "Scénographier un lieu,",
+        { text: "c'est composer avec un récit,", italic: true },
+        "des collections, une lumière,",
+        "des publics et une",
+        { text: "émotion.", accent: true },
       ]}
     />
 
     <div class="grid12 mt-20 gap-y-12 border-t border-[color:var(--color-line)] pt-14">
       {[
-        { n: "01", t: "Concevoir avec le site", d: "Chaque projet naît d'un lieu : sa lumière, son orientation, son paysage et son histoire orientent nos choix." },
-        { n: "02", t: "Construire avec sobriété", d: "Performance énergétique, matériaux justes et économie de moyens guident une architecture responsable." },
-        { n: "03", t: "Relier architecture et usage", d: "Du bâtiment à l'aménagement intérieur, nous dessinons des espaces cohérents et agréables à vivre." },
+        { n: "01", t: "Partir du récit", d: "Chaque projet naît d'un contenu à transmettre : nous en cherchons le fil, la juste narration et le rythme." },
+        { n: "02", t: "Penser les publics", d: "Enfants, familles, scolaires, experts : la médiation s'adresse à chacun, sans jamais renoncer à l'exigence." },
+        { n: "03", t: "Concevoir sur-mesure", d: "Du mobilier à la lumière, chaque dispositif est dessiné pour le lieu, son propos et son architecture." },
       ].map((p, i) => (
         <div class="col-span-12 md:col-span-4 md:px-8 md:first:pl-0 relative" data-reveal style={`--reveal-delay:${i * 120}ms`}>
           {i > 0 && <span class="hidden md:block absolute left-0 top-1 bottom-1 w-px bg-[color:var(--color-line)]"></span>}
@@ -108,20 +138,20 @@ const process = [
     </div>
   </section>
 
-  <!-- ============ 3 · EXPERTISES ============ -->
+  <!-- ============ 3 · DOMAINES ============ -->
   <section class="bg-[color:var(--color-paper-2)] py-24 md:py-36">
     <div class="shell">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 md:mb-24">
-        <SplitTitle as="h2" class="display t-h2" lines={["Trois expertises,", { text: "une même exigence.", italic: true }]} />
-        <p class="mono max-w-xs">Une réponse globale, du parti architectural à l'aménagement intérieur.</p>
+        <SplitTitle as="h2" class="display t-h2" lines={["Trois métiers,", { text: "une même écriture.", italic: true }]} />
+        <p class="mono max-w-xs">Une réponse globale, du concept muséographique à la réalisation du moindre détail.</p>
       </div>
 
       <div class="space-y-px">
         {[
-          { i: "01", t: "Architecture durable", img: "/images/site/durable.jpg", href: "/architecture-durable/", d: "Orientation, lumière naturelle, matière et sobriété énergétique. Des bâtiments THPE, BBC et RE2020 pensés pour durer.", tags: ["Énergie", "Bois", "Lumière", "Orientation"] },
-          { i: "02", t: "Maquette numérique BIM", img: "/images/site/digital.jpg", href: "/maquette-numerique/", d: "De la conception à l'exécution, le BIM comme outil de coordination, de lisibilité et de maîtrise du projet.", tags: ["BIM", "Coordination", "Précision", "GED"] },
-          { i: "03", t: "Architecture intérieure", img: "/images/site/interieur.jpg", href: "/agence/", d: "Usages, mobilier, lumière et harmonie : concevoir des lieux de vie cohérents jusque dans le détail.", tags: ["Usages", "Mobilier", "Confort", "Matières"] },
-        ].map((e, idx) => (
+          { i: "01", t: "Muséographie", img: "/images/projects/chateau-de-foix-2.jpg", href: "/savoir-faire/", d: "Traduire un contenu patrimonial ou scientifique en un parcours de visite clair, sensible et accessible à tous.", },
+          { i: "02", t: "Scénographie & mise en lumière", img: "/images/projects/plongee-au-coeur-des-canyons-1.jpg", href: "/savoir-faire/", d: "Composer l'espace, les séquences et la lumière pour donner corps au récit et éveiller l'émotion.", },
+          { i: "03", t: "Mobilier, graphisme & agencement", img: "/images/projects/office-tourisme-grand-tourmalet-1.jpg", href: "/savoir-faire/", d: "Dessiner et fabriquer sur-mesure vitrines, dispositifs, signalétique et mobilier d'accueil.", },
+        ].map((e) => (
           <a href={withBase(e.href)} data-astro-prefetch data-cursor="Découvrir" class="expertise group grid grid-cols-12 items-center gap-4 py-8 md:py-10 border-t border-[color:var(--color-line)] last:border-b" data-reveal>
             <span class="mono col-span-2 md:col-span-1 text-[color:var(--color-sage)]">{e.i}</span>
             <div class="col-span-10 md:col-span-4">
@@ -144,10 +174,10 @@ const process = [
   <section class="shell py-24 md:py-40">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
       <div>
-        <p class="mono mb-6" data-reveal>Références sélectionnées</p>
-        <SplitTitle as="h2" class="display t-h1" lines={["Des lieux durables,", { text: "cohérents et vivants.", italic: true }]} />
+        <p class="mono mb-6" data-reveal>Réalisations sélectionnées</p>
+        <SplitTitle as="h2" class="display t-h1" lines={["Des lieux qui", { text: "racontent et émeuvent.", italic: true }]} />
       </div>
-      <a href={withBase("/references/")} class="btn group self-start md:self-end" data-astro-prefetch><span>Toutes les références</span><span class="arrow">→</span></a>
+      <a href={withBase("/references/")} class="btn group self-start md:self-end" data-astro-prefetch><span>Toutes les réalisations</span><span class="arrow">→</span></a>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-12 gap-x-6 gap-y-14">
@@ -158,56 +188,28 @@ const process = [
     </div>
   </section>
 
-  <!-- ============ 5 · ARCHITECTURE DURABLE ============ -->
+  <!-- ============ 5 · SAVOIR-FAIRE ============ -->
   <section class="relative bg-[color:var(--color-ink)] text-[color:var(--color-paper)] py-24 md:py-40 overflow-hidden">
     <div class="blueprint absolute inset-0 opacity-[0.07]"></div>
     <div class="shell relative">
-      <div class="grid12 gap-y-14 items-center">
-        <div class="col-span-12 lg:col-span-5">
-          <p class="mono text-[color:var(--color-paper)]/50 mb-8" data-reveal>Architecture durable</p>
-          <SplitTitle as="h2" class="display t-h1" lines={["La performance", { text: "énergétique", accent: true }, { text: "au cœur du projet.", italic: true }]} />
+      <div class="grid12 gap-y-14">
+        <div class="col-span-12 lg:col-span-4">
+          <p class="mono text-[color:var(--color-paper)]/50 mb-8" data-reveal>Savoir-faire</p>
+          <SplitTitle as="h2" class="display t-h1" lines={["Sept métiers", { text: "réunis", accent: true }, { text: "sous un même toit.", italic: true }]} />
           <p class="t-lead text-[color:var(--color-paper)]/80 mt-8 max-w-md" data-reveal style="--reveal-delay:160ms">
-            Orientation solaire, lumière naturelle, solaire passif, choix des matériaux et construction bois : nous concevions des bâtiments THPE et BBC bien avant la réglementation.
+            De la conception au montage, l'ensemble des compétences d'un projet muséographique sont réunies en interne, pour une cohérence sans faille et un interlocuteur unique.
           </p>
-          <ul class="grid grid-cols-2 gap-x-8 gap-y-4 mt-10 max-w-md" data-reveal style="--reveal-delay:260ms">
-            {["Solaire passif", "Construction bois", "Confort d'été", "RE2020 / BBC", "Réduction des consommations", "Électricité verte"].map((x) => (
-              <li class="flex items-start gap-3 text-[color:var(--color-paper)]/75 text-sm">
-                <span class="mt-2 h-1 w-1 rounded-full bg-[color:var(--color-sage)] shrink-0"></span>{x}
-              </li>
-            ))}
-          </ul>
-          <a href={withBase("/architecture-durable/")} class="btn btn-light group mt-10" data-astro-prefetch><span>Notre engagement</span><span class="arrow">→</span></a>
+          <a href={withBase("/savoir-faire/")} class="btn btn-light group mt-10" data-astro-prefetch><span>Explorer nos savoir-faire</span><span class="arrow">→</span></a>
         </div>
 
-        <div class="col-span-12 lg:col-span-6 lg:col-start-7" data-plan>
-          <!-- Coupe de bâtiment abstraite animée -->
-          <svg viewBox="0 0 600 420" class="w-full h-auto" fill="none" aria-hidden="true" role="presentation">
-            <!-- soleil + rayons -->
-            <circle cx="500" cy="80" r="26" stroke="var(--color-sage)" style="--len:170" class="plan-line" stroke-width="1"/>
-            <g stroke="var(--color-sage)" stroke-width="1" opacity="0.7">
-              <line x1="470" y1="110" x2="360" y2="200" style="--len:150" class="plan-line"/>
-              <line x1="500" y1="120" x2="410" y2="230" style="--len:150" class="plan-line"/>
-              <line x1="525" y1="115" x2="470" y2="235" style="--len:140" class="plan-line"/>
-            </g>
-            <!-- sol -->
-            <line x1="40" y1="360" x2="560" y2="360" stroke="var(--color-paper)" stroke-opacity="0.5" style="--len:520" class="plan-line" stroke-width="1"/>
-            <!-- volume bâtiment -->
-            <path d="M120 360 L120 210 L300 120 L480 210 L480 360" stroke="var(--color-paper)" style="--len:900" class="plan-line" stroke-width="1.4"/>
-            <!-- toiture -->
-            <path d="M120 210 L300 120 L480 210" stroke="var(--color-paper)" stroke-opacity="0.6" style="--len:520" class="plan-line" stroke-width="1"/>
-            <!-- planchers -->
-            <line x1="120" y1="290" x2="480" y2="290" stroke="var(--color-paper)" stroke-opacity="0.35" style="--len:360" class="plan-line"/>
-            <!-- baies -->
-            <rect x="150" y="300" width="40" height="55" stroke="var(--color-paper)" stroke-opacity="0.4" style="--len:190" class="plan-line"/>
-            <rect x="410" y="300" width="40" height="55" stroke="var(--color-paper)" stroke-opacity="0.4" style="--len:190" class="plan-line"/>
-            <!-- flux d'air -->
-            <path d="M300 340 C300 300 340 300 340 260" stroke="var(--color-sage)" stroke-opacity="0.8" style="--len:130" class="plan-line" stroke-width="1"/>
-            <text x="150" y="160" class="mono" fill="var(--color-paper)" opacity="0.5" font-size="11">SUD</text>
-            <text x="60" y="345" class="mono" fill="var(--color-sage)" font-size="11">ISOLATION</text>
-          </svg>
-          <div class="grid grid-cols-3 gap-6 mt-8 border-t border-white/10 pt-8" data-reveal>
-            {[["THPE", "Très haute performance"], ["BBC", "Bâtiment basse conso."], ["Bois", "Construction biosourcée"]].map(([k, v]) => (
-              <div><span class="font-serif text-3xl block">{k}</span><span class="mono text-[color:var(--color-paper)]/40 mt-1 block">{v}</span></div>
+        <div class="col-span-12 lg:col-span-7 lg:col-start-6">
+          <div class="border-t border-white/10">
+            {services.map((s, i) => (
+              <div class="grid grid-cols-12 gap-4 items-baseline py-6 border-b border-white/10" data-reveal style={`--reveal-delay:${(i % 4) * 70}ms`}>
+                <span class="mono text-[color:var(--color-sage)] col-span-2 md:col-span-1">{s.n}</span>
+                <h3 class="font-serif text-xl md:text-2xl col-span-10 md:col-span-5">{s.t}</h3>
+                <p class="text-[color:var(--color-paper)]/60 text-sm col-span-12 md:col-span-6 mt-1 md:mt-0 leading-relaxed">{s.d}</p>
+              </div>
             ))}
           </div>
         </div>
@@ -215,40 +217,39 @@ const process = [
     </div>
   </section>
 
-  <!-- ============ 6 · BIM ============ -->
+  <!-- ============ 6 · CONCEPT À LA RÉALISATION ============ -->
   <section class="py-24 md:py-40 bg-[color:var(--color-paper)]">
     <div class="shell">
       <div class="grid12 gap-y-14 items-center">
         <div class="col-span-12 lg:col-span-6 order-2 lg:order-1">
           <div class="relative">
-            <!-- Effet de calques -->
             <div class="mask-reveal aspect-[4/3] bg-[color:var(--color-stone)] overflow-hidden" data-parallax="0.04">
-              <img src={withBase("/images/site/bim-1.png")} alt="Maquette numérique BIM d'un bâtiment" loading="lazy" class="w-full h-full object-cover" />
+              <img src={withBase("/images/projects/salon-occitanie-innov-2023-2.jpg")} alt="Scénographie en cours de réalisation par CS Design" loading="lazy" class="w-full h-full object-cover" />
             </div>
             <div class="absolute -bottom-10 -right-4 md:-right-10 w-1/2 mask-reveal aspect-[4/3] bg-[color:var(--color-sand)] border-4 border-[color:var(--color-paper)] shadow-sm overflow-hidden" data-parallax="0.12">
-              <img src={withBase("/images/site/bim-2.png")} alt="Coordination de maquette BIM" loading="lazy" class="w-full h-full object-cover" />
+              <img src={withBase("/images/projects/salon-occitanie-innov-2023-3.jpg")} alt="Dispositif scénographique CS Design" loading="lazy" class="w-full h-full object-cover" />
             </div>
             <div class="absolute -top-6 -left-4 hidden md:flex items-center gap-2 mono bg-[color:var(--color-ink)] text-[color:var(--color-paper)] px-4 py-2">
-              <span class="h-1.5 w-1.5 rounded-full bg-[color:var(--color-sage)]"></span>BIM · niveau LOD 350
+              <span class="h-1.5 w-1.5 rounded-full bg-[color:var(--color-sage)]"></span>Conception & réalisation
             </div>
           </div>
         </div>
 
         <div class="col-span-12 lg:col-span-5 lg:col-start-8 order-1 lg:order-2">
-          <p class="mono mb-8" data-reveal>Maquette numérique</p>
-          <SplitTitle as="h2" class="display t-h1" lines={["Le BIM comme outil", { text: "de coordination", accent: true }, { text: "et de maîtrise.", italic: true }]} />
+          <p class="mono mb-8" data-reveal>Une agence intégrée</p>
+          <SplitTitle as="h2" class="display t-h1" lines={["Du concept", { text: "à l'ouverture", accent: true }, { text: "au public.", italic: true }]} />
           <p class="t-lead text-[color:var(--color-muted)] mt-8" data-reveal style="--reveal-delay:160ms">
-            De la conception à l'exécution, tous nos projets sont conçus en maquette numérique, en collaboration avec les bureaux d'études et les entreprises.
+            Nous concevons vos projets d'aménagement et vous accompagnons dans leur réalisation, sans rupture entre l'idée et le chantier.
           </p>
           <div class="mt-10 divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]" data-reveal style="--reveal-delay:220ms">
-            {[["Conception à exécution", "Une même maquette, du parti au chantier."], ["BIM Serveur · GED · Viewer", "Le partage collaboratif des maquettes."], ["Maintenance & exploitation", "Surveiller, anticiper, gérer le bâtiment."]].map(([t, d]) => (
+            {[["Conception intégrée", "Muséographie, graphisme et mobilier dessinés ensemble."], ["Modélisation 3D", "Éprouver et partager le projet avant sa fabrication."], ["Pilotage & coordination", "Un suivi OPC jusqu'au montage sur site."]].map(([t, d]) => (
               <div class="py-5 flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-6">
                 <span class="font-serif text-lg sm:w-2/5">{t}</span>
                 <span class="text-[color:var(--color-muted)] text-sm sm:flex-1">{d}</span>
               </div>
             ))}
           </div>
-          <a href={withBase("/maquette-numerique/")} class="btn group mt-10" data-astro-prefetch><span>Explorer le BIM</span><span class="arrow">→</span></a>
+          <a href={withBase("/savoir-faire/")} class="btn group mt-10" data-astro-prefetch><span>Notre méthode</span><span class="arrow">→</span></a>
         </div>
       </div>
     </div>
@@ -259,17 +260,17 @@ const process = [
     <div class="shell grid12 gap-y-14 items-center">
       <div class="col-span-12 lg:col-span-5">
         <div class="mask-reveal aspect-[4/5] bg-[color:var(--color-stone)] overflow-hidden">
-          <img src={withBase("/images/site/agence.jpg")} alt="L'agence CS Architecture" loading="lazy" data-parallax="0.06" class="w-full h-[110%] object-cover" />
+          <img src={withBase("/images/site/agence.jpg")} alt="L'agence CS Design — muséographie et scénographie" loading="lazy" data-parallax="0.06" class="w-full h-[110%] object-cover" />
         </div>
       </div>
       <div class="col-span-12 lg:col-span-6 lg:col-start-7">
         <p class="mono mb-8" data-reveal>L'agence</p>
-        <SplitTitle as="h2" class="display t-h1" lines={["Trente ans", { text: "d'architecture", italic: true }, "attentive."]} />
+        <SplitTitle as="h2" class="display t-h1" lines={["Une équipe", { text: "pluridisciplinaire", italic: true }, "et engagée."]} />
         <p class="t-lead text-[color:var(--color-muted)] mt-8 max-w-xl" data-reveal style="--reveal-delay:140ms">
-          L'alliance de Stéphane Caussarrieu, architecte DPLG, et Caroline Caussarrieu, designer d'intérieur, permet d'apporter une réponse globale : du bâtiment à l'aménagement intérieur, dans l'écoute du maître d'ouvrage.
+          Fondée par Claire Simonet, scénographe-designer, CS Design réunit muséographes, designers et pilotes de projet autour d'une conviction : chaque lieu mérite un récit sur-mesure.
         </p>
         <div class="grid grid-cols-3 gap-6 mt-12 border-t border-[color:var(--color-line)] pt-10" data-reveal style="--reveal-delay:220ms">
-          {[["30", "ans d'expérience"], ["8", "personnes pluridisciplinaires"], ["100%", "des projets en BIM"]].map(([k, v]) => (
+          {[["7", "domaines de savoir-faire"], ["100%", "projets sur-mesure"], ["3", "régions d'intervention"]].map(([k, v]) => (
             <div><span class="display text-[clamp(2.2rem,5vw,3.5rem)] block leading-none">{k}</span><span class="mono mt-2 block max-w-[14ch]">{v}</span></div>
           ))}
         </div>
@@ -278,11 +279,11 @@ const process = [
     </div>
   </section>
 
-  <!-- ============ 8 · PROCESSUS ============ -->
+  <!-- ============ 8 · MÉTHODE ============ -->
   <section class="shell py-24 md:py-40">
     <div class="max-w-2xl mb-16 md:mb-24">
-      <p class="mono mb-6" data-reveal>Notre démarche</p>
-      <SplitTitle as="h2" class="display t-h1" lines={["De l'esquisse", { text: "à la réception.", italic: true }]} />
+      <p class="mono mb-6" data-reveal>Notre méthode</p>
+      <SplitTitle as="h2" class="display t-h1" lines={["Du croquis", { text: "à l'ouverture.", italic: true }]} />
     </div>
 
     <ol class="relative border-l border-[color:var(--color-line)] ml-2 md:ml-0">
@@ -297,30 +298,30 @@ const process = [
     </ol>
   </section>
 
-  <!-- ============ 9 · MAÎTRES D'OUVRAGE ============ -->
+  <!-- ============ 9 · ILS NOUS FONT CONFIANCE ============ -->
   <section class="bg-[color:var(--color-ink)] text-[color:var(--color-paper)] py-20 md:py-28 overflow-hidden">
     <div class="shell">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-        <SplitTitle as="h2" class="display t-h2 max-w-[16ch]" lines={["La confiance", { text: "des maîtres d'ouvrage.", italic: true }]} />
-        <p class="mono text-[color:var(--color-paper)]/50 max-w-xs">Collectivités, institutions et entreprises nous confient leurs bâtiments depuis trois décennies.</p>
+        <SplitTitle as="h2" class="display t-h2 max-w-[16ch]" lines={["Ils nous", { text: "font confiance.", italic: true }]} />
+        <p class="mono text-[color:var(--color-paper)]/50 max-w-xs">Collectivités, musées, parcs nationaux et institutions culturelles nous confient leurs projets partout en France.</p>
       </div>
     </div>
     <div class="relative select-none" aria-hidden="true">
       <div class="marquee-track">
-        {[...markets, ...markets].map((m) => (
+        {[...domains, ...domains].map((m) => (
           <span class="display text-[clamp(2rem,6vw,4.5rem)] text-[color:var(--color-paper)]/20 px-8 flex items-center gap-8">{m}<span class="text-[color:var(--color-sage)]/60 text-xl">✳</span></span>
         ))}
       </div>
     </div>
     <div class="shell mt-14">
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/10 border border-white/10">
-        {markets.map((m, i) => (
-          <div class="bg-[color:var(--color-ink)] p-6 md:p-8" data-reveal style={`--reveal-delay:${(i % 3) * 90}ms`}>
-            <span class="mono text-[color:var(--color-sage)]">0{i + 1}</span>
-            <p class="font-serif text-xl mt-3">{m}</p>
-          </div>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
+        {clients.map((c, i) => (
+          <li class="bg-[color:var(--color-ink)] p-5 md:p-6 flex items-baseline gap-4" data-reveal style={`--reveal-delay:${(i % 3) * 80}ms`}>
+            <span class="mono text-[color:var(--color-sage)] shrink-0">{String(i + 1).padStart(2, "0")}</span>
+            <p class="font-serif text-lg leading-tight">{c}</p>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   </section>
 </Base>

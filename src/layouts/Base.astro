@@ -17,25 +17,25 @@ const {
   title,
   description,
   overlayDark = false,
-  image = "/images/projects/lycee-bolland-full.jpg",
+  image = "/images/site/home-hero.jpg",
   noindex = false,
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://www.csarchitecture.fr").toString();
-const fullTitle = title.includes("CS Architecture") ? title : `${title} — CS Architecture`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://www.csdesign.fr").toString();
+const fullTitle = title.includes("CS Design") ? title : `${title} — CS Design`;
 
-const ogImage = new URL(withBase(image), Astro.site ?? "https://www.csarchitecture.fr").toString();
+const ogImage = new URL(withBase(image), Astro.site ?? "https://www.csdesign.fr").toString();
 
 const localBusiness = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "@id": "https://www.csarchitecture.fr/#organization",
-  name: "CS Architecture",
+  "@id": "https://www.csdesign.fr/#organization",
+  name: "CS Design",
+  legalName: site.legalName,
   description:
-    "Agence d'architecture et de design d'intérieur à Orléans. Architecture durable, réhabilitation et maquette numérique BIM.",
-  url: "https://www.csarchitecture.fr",
+    "Agence de muséographie, scénographie et aménagement d'espaces recevant du public. Musées, expositions, centres d'interprétation et espaces tourisme.",
+  url: "https://www.csdesign.fr",
   image: ogImage,
-  logo: new URL(withBase("/images/brand/logo-cs-noir.png"), Astro.site ?? "https://www.csarchitecture.fr").toString(),
   telephone: site.phone,
   email: site.email,
   priceRange: "€€€",
@@ -44,27 +44,25 @@ const localBusiness = {
     streetAddress: site.address.street,
     postalCode: site.address.postal,
     addressLocality: site.address.city,
-    addressRegion: "Centre-Val de Loire",
+    addressRegion: "Occitanie",
     addressCountry: "FR",
   },
-  geo: { "@type": "GeoCoordinates", latitude: 47.882, longitude: 1.888 },
-  areaServed: { "@type": "AdministrativeArea", name: "Centre-Val de Loire" },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-      opens: "09:00",
-      closes: "18:00",
-    },
-  ],
+  geo: { "@type": "GeoCoordinates", latitude: 44.066, longitude: 1.024 },
+  areaServed: { "@type": "Country", name: "France" },
   knowsAbout: [
-    "Architecture durable",
-    "Maquette numérique BIM",
-    "Design d'intérieur",
-    "Réhabilitation de bâtiment",
-    "Rénovation énergétique",
+    "Muséographie",
+    "Scénographie d'exposition",
+    "Centre d'interprétation",
+    "Design de mobilier et agencement",
+    "Signalétique et création graphique",
+    "Étude d'éclairage muséal",
   ],
-  founder: { "@type": "Person", name: "Stéphane Caussarrieu", jobTitle: "Architecte DPLG" },
+  founder: { "@type": "Person", name: "Claire Simonet", jobTitle: "Scénographe-designer" },
+  sameAs: [
+    "https://www.instagram.com/csdesign82/",
+    "https://www.facebook.com/ClaireSimonetScenographe/",
+    "https://www.linkedin.com/in/clairesimonet/",
+  ],
 };
 ---
 <!doctype html>
@@ -81,12 +79,12 @@ const localBusiness = {
     {noindex && <meta name="robots" content="noindex" />}
 
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="CS Architecture" />
+    <meta property="og:site_name" content="CS Design" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:alt" content="CS Architecture — Architecte à Orléans" />
+    <meta property="og:image:alt" content="CS Design — Muséographie et scénographie" />
     <meta property="og:locale" content="fr_FR" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />

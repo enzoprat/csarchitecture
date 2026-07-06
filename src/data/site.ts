@@ -1,24 +1,30 @@
 export const site = {
-  name: "CS Architecture",
-  legalName: "CS Architecture",
-  tagline: "Architecture durable, design d'intérieur et maquette numérique",
-  city: "Orléans",
+  name: "CS Design",
+  legalName: "SARL CS DESIGN",
+  tagline: "Muséographie, scénographie et aménagement d'espaces recevant du public",
+  city: "Saint-Nicolas-de-la-Grave",
+  siret: "667 975 217 96",
   address: {
-    street: "26 avenue de Saint-Mesmin",
-    postal: "45100",
-    city: "Orléans",
+    street: "2 avenue du Cami Neou",
+    postal: "82210",
+    city: "Saint-Nicolas-de-la-Grave",
     country: "France",
   },
-  phone: "+33 (0)2 38 88 49 08",
-  phoneHref: "+33238884908",
-  email: "contact@csarchitecture.fr",
-  url: "https://www.csarchitecture.fr",
+  phone: "06 75 64 81 29",
+  phoneHref: "+33675648129",
+  email: "cl.simonet@csdesign.fr",
+  url: "https://www.csdesign.fr",
+};
+
+export const social = {
+  facebook: "https://www.facebook.com/ClaireSimonetScenographe/",
+  instagram: "https://www.instagram.com/csdesign82/",
+  linkedin: "https://www.linkedin.com/in/clairesimonet/",
 };
 
 export const nav = [
   { label: "Références", href: "/references/" },
-  { label: "Architecture durable", href: "/architecture-durable/" },
-  { label: "Maquette numérique", href: "/maquette-numerique/" },
+  { label: "Savoir-faire", href: "/savoir-faire/" },
   { label: "L'agence", href: "/agence/" },
   { label: "Contact", href: "/contact/" },
 ];

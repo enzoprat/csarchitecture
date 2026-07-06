@@ -1,22 +1,18 @@
 export type Category =
-  | "Établissements scolaires"
-  | "Édifices publics"
-  | "Tertiaire & commerces"
-  | "Industrie"
-  | "Santé"
-  | "Résidentiel"
-  | "Design d'intérieur"
-  | "Bâtiments sportifs";
+  | "Musées & expositions"
+  | "Centres d'interprétation"
+  | "Espaces tourisme"
+  | "Scénographie temporaire"
+  | "Signalétique & graphisme"
+  | "Mobilier sur-mesure";
 
 export const CATEGORIES: Category[] = [
-  "Établissements scolaires",
-  "Édifices publics",
-  "Tertiaire & commerces",
-  "Industrie",
-  "Santé",
-  "Résidentiel",
-  "Design d'intérieur",
-  "Bâtiments sportifs",
+  "Musées & expositions",
+  "Centres d'interprétation",
+  "Espaces tourisme",
+  "Scénographie temporaire",
+  "Signalétique & graphisme",
+  "Mobilier sur-mesure",
 ];
 
 export interface Project {
@@ -45,355 +41,417 @@ const P = "/images/projects";
 
 export const projects: Project[] = [
   {
-    slug: "atirro-centre-de-dialyse-olivet",
-    title: "Centre de dialyse ATIRRO",
-    city: "Olivet (45)",
-    categories: ["Santé"],
-    year: "2024",
-    program: "Établissement de santé — unité de dialyse",
-    surface: "1 850 m²",
-    status: "Livré",
-    intervention: "Construction neuve",
-    mission: "Mission complète",
-    thumb: `${P}/atirro.jpeg`,
-    hero: `${P}/atirro-full.jpeg`,
-    gallery: [`${P}/atirro-full.jpeg`, `${P}/atirro.jpeg`],
-    excerpt:
-      "Un lieu de soin apaisé, où la lumière naturelle et les vues sur le paysage accompagnent le temps long du traitement.",
-    context:
-      "La dialyse impose des séances longues et répétées. Le projet répond à cette réalité par une architecture attentive au confort du patient et à l'ergonomie des équipes soignantes, sur un terrain contraint en périphérie d'Olivet.",
-    response:
-      "Le plan s'organise autour d'un cœur technique clair, desservant des salles baignées de lumière naturelle. Les circulations sont lisibles, les vues cadrées sur le végétal, et l'ambiance intérieure vise l'apaisement plutôt que la neutralité hospitalière.",
-    matter:
-      "Teintes minérales, bois clair, lumière tamisée et contrôlée. Les matériaux ont été choisis pour leur pérennité, leur facilité d'entretien et leur douceur perçue.",
-    data: [
-      { label: "Surface", value: "1 850 m²" },
-      { label: "Livraison", value: "2024" },
-      { label: "Postes de soin", value: "24" },
-      { label: "Performance", value: "RE2020" },
-    ],
-    featured: true,
-  },
-  {
-    slug: "john-deere-renovation-energetique-fleury",
-    title: "John Deere — Rénovation énergétique",
-    city: "Fleury-les-Aubrais (45)",
-    categories: ["Industrie", "Tertiaire & commerces"],
-    year: "2024",
-    program: "Réhabilitation tertiaire et industrielle",
-    surface: "4 200 m²",
-    status: "Livré",
-    intervention: "Réhabilitation — ITE",
-    mission: "Conception & suivi de travaux",
-    thumb: `${P}/john-deere.jpeg`,
-    hero: `${P}/john-deere-full.jpeg`,
-    gallery: [`${P}/john-deere-full.jpeg`, `${P}/john-deere.jpeg`],
-    excerpt:
-      "Une isolation thermique par l'extérieur qui redessine l'identité du bâtiment tout en réduisant ses consommations.",
-    context:
-      "Le bâtiment existant présentait une enveloppe énergivore et une image vieillissante. L'enjeu : améliorer sensiblement la performance thermique sans interrompre l'activité du site.",
-    response:
-      "L'isolation par l'extérieur devient un projet architectural à part entière. Le nouveau bardage recompose les proportions, affirme les entrées et modernise l'image de l'entreprise dans une écriture sobre et industrielle.",
-    matter:
-      "Bardage métallique, calepinage maîtrisé, jeux de reliefs et de teintes sombres. La matière technique est mise au service d'une cohérence d'ensemble.",
-    data: [
-      { label: "Surface", value: "4 200 m²" },
-      { label: "Intervention", value: "ITE" },
-      { label: "Gain énergétique", value: "≈ 45 %" },
-      { label: "Site", value: "En activité" },
-    ],
-    featured: true,
-  },
-  {
-    slug: "bureaux-region-centre-val-de-loire-orleans",
-    title: "Bureaux Région Centre-Val de Loire",
-    city: "Orléans (45)",
-    categories: ["Design d'intérieur", "Tertiaire & commerces"],
-    year: "2023",
-    program: "Aménagement d'espaces tertiaires",
-    surface: "2 600 m²",
-    status: "Livré",
-    intervention: "Aménagement intérieur",
-    mission: "Design d'intérieur & mobilier",
-    thumb: `${P}/bureaux-region.jpeg`,
-    hero: `${P}/bureaux-region-full.jpeg`,
-    gallery: [`${P}/bureaux-region-full.jpeg`, `${P}/bureaux-region.jpeg`],
-    excerpt:
-      "Des espaces de travail pensés pour l'usage, l'échange et le confort, entre rigueur institutionnelle et hospitalité.",
-    context:
-      "Repenser des plateaux de bureaux pour accompagner de nouveaux modes de travail : espaces partagés, zones de concentration, lieux informels de rencontre.",
-    response:
-      "Le design d'intérieur module la lumière, les matières et le mobilier pour créer une variété d'ambiances. Les circulations deviennent des lieux, les espaces de détente structurent la vie collective.",
-    matter:
-      "Bois chaleureux, textiles acoustiques, teintes naturelles et touches végétales. Le confort perçu prime, sans renoncer à la lisibilité institutionnelle.",
-    data: [
-      { label: "Surface", value: "2 600 m²" },
-      { label: "Livraison", value: "2023" },
-      { label: "Mission", value: "Design intérieur" },
-      { label: "Usage", value: "Tertiaire" },
-    ],
-    featured: true,
-  },
-  {
-    slug: "lycee-adrienne-bolland-chateauneuf-5",
-    title: "Lycée Adrienne Bolland",
-    city: "Châteauneuf-sur-Loire (45)",
-    categories: ["Établissements scolaires", "Édifices publics"],
-    year: "2024",
-    program: "Établissement d'enseignement",
-    surface: "9 400 m²",
-    status: "Livré",
-    intervention: "Construction & extension",
-    mission: "Mission complète",
-    thumb: `${P}/lycee-bolland.jpg`,
-    hero: `${P}/lycee-bolland-full.jpg`,
-    gallery: [`${P}/lycee-bolland-full.jpg`, `${P}/lycee-bolland-2.jpg`],
-    excerpt:
-      "Un établissement lumineux et généreux, où l'architecture soutient la vie scolaire et le rapport au paysage ligérien.",
-    context:
-      "Concevoir un lycée à l'échelle du territoire, en dialogue avec le paysage de Loire, capable d'accueillir dans de bonnes conditions élèves et personnels.",
-    response:
-      "Les volumes s'articulent autour de patios et de circulations largement éclairées. La compacité sert la performance énergétique ; les espaces communs favorisent les rencontres et l'appropriation.",
-    matter:
-      "Béton clair, bois, grandes baies et brise-soleil. La matière structure les usages et régule la lumière au fil des saisons.",
-    data: [
-      { label: "Surface", value: "9 400 m²" },
-      { label: "Livraison", value: "2024" },
-      { label: "Maîtrise d'ouvrage", value: "Région CVL" },
-      { label: "Performance", value: "BBC" },
-    ],
-    featured: true,
-  },
-  {
-    slug: "groupe-scolaire-jules-ferry-vendome",
-    title: "Groupe scolaire Jules Ferry",
-    city: "Vendôme (41)",
-    categories: ["Établissements scolaires", "Édifices publics"],
+    slug: "abbaye-beaulieu-en-rouergue",
+    title: "Abbaye de Beaulieu-en-Rouergue",
+    city: "Ginals (82)",
+    categories: ["Musées & expositions"],
     year: "2022",
-    program: "Groupe scolaire maternelle & élémentaire",
-    surface: "3 100 m²",
+    program: "Parcours de visite permanent — monument national",
+    surface: "Abbaye cistercienne",
     status: "Livré",
-    intervention: "Restructuration & extension",
-    mission: "Mission complète",
-    thumb: `${P}/jules-ferry.jpeg`,
-    hero: `${P}/jules-ferry-full.jpeg`,
-    gallery: [`${P}/jules-ferry-full.jpeg`, `${P}/jules-ferry.jpeg`],
+    intervention: "Muséographie & scénographie",
+    mission: "Conception & réalisation",
+    thumb: `${P}/abbaye-beaulieu-en-rouergue-hero.jpg`,
+    hero: `${P}/abbaye-beaulieu-en-rouergue-hero.jpg`,
+    gallery: [
+      `${P}/abbaye-beaulieu-en-rouergue-hero.jpg`,
+      `${P}/abbaye-beaulieu-en-rouergue-1.jpg`,
+      `${P}/abbaye-beaulieu-en-rouergue-2.jpg`,
+      `${P}/abbaye-beaulieu-en-rouergue-3.jpg`,
+    ],
     excerpt:
-      "Une école à hauteur d'enfant, claire et rassurante, ouverte sur ses cours et son environnement.",
+      "Un parcours de visite qui révèle l'architecture cistercienne du XIIIᵉ siècle sans jamais la concurrencer.",
     context:
-      "Adapter un groupe scolaire existant aux besoins contemporains : accessibilité, confort thermique, qualité des espaces d'apprentissage et de récréation.",
+      "Monument géré par le Centre des monuments nationaux, l'abbaye conjugue architecture gothique et collection d'art contemporain. L'enjeu : donner des clés de lecture au visiteur tout en préservant la puissance nue des espaces.",
     response:
-      "Les extensions dialoguent avec l'existant par des volumes simples et des seuils protégés. La lumière naturelle et les couleurs douces qualifient les salles et les circulations.",
+      "La scénographie repose sur un vocabulaire discret et réversible : dispositifs autoportants, graphisme sobre, éclairage rasant. Chaque intervention se retire devant la pierre et laisse respirer les volumes.",
     matter:
-      "Enduits clairs, menuiseries généreuses, préaux et matières chaleureuses adaptées à l'usage intensif d'une école.",
+      "Matériaux bruts, teintes minérales et contrastes maîtrisés. Le mobilier de médiation dialogue avec la matière du monument sans la masquer.",
     data: [
-      { label: "Surface", value: "3 100 m²" },
+      { label: "Maître d'ouvrage", value: "Centre des monuments nationaux" },
       { label: "Livraison", value: "2022" },
-      { label: "Cycles", value: "Maternelle & élémentaire" },
-      { label: "Ville", value: "Vendôme" },
+      { label: "Type", value: "Parcours permanent" },
+      { label: "Lieu", value: "Ginals (82)" },
     ],
+    featured: true,
   },
   {
-    slug: "groupe-scolaire-anatole-france-vendome",
-    title: "Groupe scolaire Anatole France",
-    city: "Vendôme (41)",
-    categories: ["Établissements scolaires", "Édifices publics"],
+    slug: "salon-occitanie-innov-2023",
+    title: "Salon Occitanie Innov 2023",
+    city: "Toulouse (31)",
+    categories: ["Scénographie temporaire", "Mobilier sur-mesure"],
     year: "2023",
-    program: "Groupe scolaire",
-    surface: "2 750 m²",
+    program: "Scénographie événementielle — salon professionnel",
+    surface: "Cité de Toulouse",
     status: "Livré",
-    intervention: "Réhabilitation",
-    mission: "Mission complète",
-    thumb: `${P}/anatole-france.jpeg`,
-    hero: `${P}/anatole-france-full.jpeg`,
-    gallery: [`${P}/anatole-france-full.jpeg`, `${P}/anatole-france.jpeg`],
-    excerpt:
-      "La réhabilitation d'une école patrimoniale, entre respect de l'existant et confort contemporain.",
-    context:
-      "Un bâtiment scolaire ancien à préserver et à mettre aux normes, sans effacer son caractère ni sa mémoire.",
-    response:
-      "Le projet révèle les qualités de l'existant, améliore l'enveloppe et redistribue les usages. L'entrée requalifiée affirme une identité claire et accueillante.",
-    matter:
-      "Pierre et enduits d'origine préservés, interventions contemporaines lisibles, lumière retravaillée.",
-    data: [
-      { label: "Surface", value: "2 750 m²" },
-      { label: "Livraison", value: "2023" },
-      { label: "Intervention", value: "Réhabilitation" },
-      { label: "Ville", value: "Vendôme" },
+    intervention: "Scénographie & agencement",
+    mission: "Conception & réalisation",
+    thumb: `${P}/salon-occitanie-innov-2023-hero.jpg`,
+    hero: `${P}/salon-occitanie-innov-2023-hero.jpg`,
+    gallery: [
+      `${P}/salon-occitanie-innov-2023-hero.jpg`,
+      `${P}/salon-occitanie-innov-2023-1.jpg`,
+      `${P}/salon-occitanie-innov-2023-2.jpg`,
+      `${P}/salon-occitanie-innov-2023-3.jpg`,
     ],
+    excerpt:
+      "Un événement de l'innovation régionale mis en espace : lisibilité des parcours, identité forte, montage rapide.",
+    context:
+      "Pour l'agence de développement économique AD'OCC, il s'agissait de scénographier un salon rassemblant start-ups, institutions et grands comptes dans un temps de montage très contraint.",
+    response:
+      "Un système modulaire structure les îlots thématiques et les zones de rencontre. Le graphisme grand format oriente les flux ; le mobilier sur-mesure combine réemploi et remontabilité.",
+    matter:
+      "Structures légères, signalétique colorée et matériaux réutilisables. L'ensemble se déploie et se démonte en quelques heures.",
+    data: [
+      { label: "Maître d'ouvrage", value: "AD'OCC" },
+      { label: "Année", value: "2023" },
+      { label: "Type", value: "Événementiel" },
+      { label: "Lieu", value: "Cité de Toulouse" },
+    ],
+    featured: true,
   },
   {
-    slug: "chocolaterie-jeanne-darc-orleans",
-    title: "Chocolaterie Jeanne d'Arc",
-    city: "Orléans (45)",
-    categories: ["Design d'intérieur", "Tertiaire & commerces"],
-    year: "2024",
-    program: "Boutique & atelier — commerce",
-    surface: "320 m²",
+    slug: "maison-biodiversite-buzet",
+    title: "Maison de la biodiversité",
+    city: "Buzet-sur-Tarn (31)",
+    categories: ["Centres d'interprétation", "Mobilier sur-mesure"],
+    year: "2020",
+    program: "Centre d'interprétation — biodiversité",
+    surface: "Parcours intérieur & extérieur",
     status: "Livré",
-    intervention: "Aménagement intérieur",
-    mission: "Design d'intérieur",
-    thumb: `${P}/chocolaterie.jpeg`,
-    hero: `${P}/chocolaterie-full.jpeg`,
-    gallery: [`${P}/chocolaterie-full.jpeg`, `${P}/chocolaterie.jpeg`],
-    excerpt:
-      "Un écrin gourmand où la matière et la lumière subliment le geste artisanal et le produit.",
-    context:
-      "Donner à une maison chocolatière un lieu à la hauteur de son savoir-faire, entre théâtralité de la vitrine et intimité de la dégustation.",
-    response:
-      "La scénographie intérieure hiérarchise les regards : mise en scène du produit, comptoir généreux, matières nobles. L'atelier visible raconte le métier.",
-    matter:
-      "Bois sombre, laiton, éclairage précis et surfaces minérales. Chaque détail sert la perception du produit.",
-    data: [
-      { label: "Surface", value: "320 m²" },
-      { label: "Livraison", value: "2024" },
-      { label: "Mission", value: "Design intérieur" },
-      { label: "Usage", value: "Commerce" },
+    intervention: "Muséographie sensorielle",
+    mission: "Conception & réalisation",
+    thumb: `${P}/maison-biodiversite-buzet-hero.jpg`,
+    hero: `${P}/maison-biodiversite-buzet-hero.jpg`,
+    gallery: [
+      `${P}/maison-biodiversite-buzet-hero.jpg`,
+      `${P}/maison-biodiversite-buzet-1.jpg`,
+      `${P}/maison-biodiversite-buzet-2.jpg`,
+      `${P}/maison-biodiversite-buzet-3.jpg`,
     ],
+    excerpt:
+      "Une scénographie sensorielle et éco-conçue pour sensibiliser petits et grands à la biodiversité locale.",
+    context:
+      "Pour le Département de la Haute-Garonne, la Maison de la biodiversité devait s'adresser à tous les publics, de la classe primaire au visiteur familial, en intérieur comme en extérieur.",
+    response:
+      "Le parcours mêle manipulations, dispositifs multimédias ludiques et immersion sensorielle. Une logique d'escape game rythme la visite ; le prolongement extérieur ancre le propos dans le paysage réel.",
+    matter:
+      "Éco-conception affirmée : matériaux biosourcés, mobilier durable et dispositifs tactiles pensés pour l'usage intensif.",
+    data: [
+      { label: "Maître d'ouvrage", value: "Département de la Haute-Garonne" },
+      { label: "Livraison", value: "2020" },
+      { label: "Approche", value: "Éco-conception" },
+      { label: "Publics", value: "Tous publics" },
+    ],
+    featured: true,
   },
   {
-    slug: "boulangerie-guepin-montoire",
-    title: "Boulangerie Guépin",
-    city: "Montoire-sur-le-Loir (41)",
-    categories: ["Tertiaire & commerces"],
-    year: "2023",
-    program: "Boulangerie — commerce de proximité",
-    surface: "410 m²",
+    slug: "plongee-au-coeur-des-canyons",
+    title: "Plongée au cœur des canyons",
+    city: "Marseille (13)",
+    categories: ["Musées & expositions", "Scénographie temporaire"],
+    year: "2020",
+    program: "Exposition immersive itinérante",
+    surface: "Format itinérant",
     status: "Livré",
-    intervention: "Construction neuve",
-    mission: "Mission complète",
-    thumb: `${P}/boulangerie.jpg`,
-    hero: `${P}/boulangerie-full.jpg`,
-    gallery: [`${P}/boulangerie-full.jpg`, `${P}/boulangerie.jpg`],
-    excerpt:
-      "Un commerce de proximité lisible et accueillant, pensé pour le flux, la lumière et le fournil.",
-    context:
-      "Implanter une boulangerie neuve, visible et fonctionnelle, articulant espace de vente, fournil et stationnement.",
-    response:
-      "Le volume simple et affirmé signale l'activité. La façade travaille la transparence vers la vente ; le fournil bénéficie d'une organisation rationnelle.",
-    matter:
-      "Façade claire, grandes vitrines, auvent protecteur. L'architecture reste sobre au service de l'usage commercial.",
-    data: [
-      { label: "Surface", value: "410 m²" },
-      { label: "Livraison", value: "2023" },
-      { label: "Intervention", value: "Neuf" },
-      { label: "Usage", value: "Commerce" },
+    intervention: "Scénographie immersive & multimédia",
+    mission: "Conception & réalisation",
+    thumb: `${P}/plongee-au-coeur-des-canyons-hero.jpg`,
+    hero: `${P}/plongee-au-coeur-des-canyons-hero.jpg`,
+    gallery: [
+      `${P}/plongee-au-coeur-des-canyons-hero.jpg`,
+      `${P}/plongee-au-coeur-des-canyons-1.jpg`,
+      `${P}/plongee-au-coeur-des-canyons-2.jpg`,
+      `${P}/plongee-au-coeur-des-canyons-3.jpg`,
     ],
+    excerpt:
+      "Une immersion audiovisuelle dans les canyons sous-marins, conçue pour voyager de site en site.",
+    context:
+      "Le Parc national des Calanques souhaitait faire découvrir un patrimoine naturel invisible, situé au large et en profondeur, à travers une exposition capable de circuler sur le territoire.",
+    response:
+      "La scénographie plonge le visiteur dans un environnement sombre et enveloppant, structuré par la projection et le son. Le dispositif, léger et modulable, se remonte facilement dans des lieux variés.",
+    matter:
+      "Toiles imprimées, audiovisuel immersif et structures démontables. L'obscurité maîtrisée devient le principal matériau de l'expérience.",
+    data: [
+      { label: "Maître d'ouvrage", value: "Parc national des Calanques" },
+      { label: "Livraison", value: "2020" },
+      { label: "Type", value: "Exposition itinérante" },
+      { label: "Registre", value: "Immersif" },
+    ],
+    featured: true,
   },
   {
-    slug: "college-la-croix-saint-marceau-orleans",
-    title: "Collège La Croix Saint-Marceau",
-    city: "Orléans (45)",
-    categories: ["Établissements scolaires", "Édifices publics"],
-    year: "2025",
-    program: "Collège",
-    surface: "6 800 m²",
-    status: "En chantier",
-    intervention: "Restructuration lourde",
-    mission: "Mission complète",
-    thumb: `${P}/college-croix.jpeg`,
-    hero: `${P}/college-croix-full.jpeg`,
-    gallery: [`${P}/college-croix-full.jpeg`, `${P}/college-croix.jpeg`],
-    excerpt:
-      "La transformation d'un collège en site occupé, au service du confort d'usage et de la performance énergétique.",
-    context:
-      "Restructurer un collège tout en maintenant la continuité pédagogique. Un chantier phasé, complexe, en milieu occupé.",
-    response:
-      "Le projet clarifie les entrées, requalifie les espaces communs et améliore fortement l'enveloppe. La maquette numérique sécurise le phasage et la coordination.",
-    matter:
-      "Interventions contemporaines sur bâti existant, matières durables, apports de lumière naturelle.",
-    data: [
-      { label: "Surface", value: "6 800 m²" },
-      { label: "Statut", value: "En chantier" },
-      { label: "Chantier", value: "Site occupé" },
-      { label: "Ville", value: "Orléans" },
-    ],
-  },
-  {
-    slug: "lycee-adrienne-bolland-chateauneuf-2",
-    title: "Lycée Adrienne Bolland — Phase 2",
-    city: "Châteauneuf-sur-Loire (45)",
-    categories: ["Établissements scolaires", "Édifices publics"],
-    year: "2023",
-    program: "Établissement d'enseignement",
-    surface: "3 200 m²",
+    slug: "musee-histoire-marseille-canal-de-suez",
+    title: "Le canal de Suez — Musée d'Histoire",
+    city: "Marseille (13)",
+    categories: ["Musées & expositions", "Scénographie temporaire"],
+    year: "2018",
+    program: "Exposition temporaire — musée d'Histoire",
+    surface: "Salle d'exposition temporaire",
     status: "Livré",
-    intervention: "Extension",
-    mission: "Mission complète",
-    thumb: `${P}/lycee-bolland-2.jpg`,
-    hero: `${P}/lycee-bolland-2.jpg`,
-    gallery: [`${P}/lycee-bolland-2.jpg`, `${P}/lycee-bolland.jpg`],
+    intervention: "Scénographie d'exposition",
+    mission: "Conception & réalisation",
+    thumb: `${P}/musee-histoire-marseille-canal-de-suez-hero.jpg`,
+    hero: `${P}/musee-histoire-marseille-canal-de-suez-hero.jpg`,
+    gallery: [
+      `${P}/musee-histoire-marseille-canal-de-suez-hero.jpg`,
+      `${P}/musee-histoire-marseille-canal-de-suez-1.jpg`,
+      `${P}/musee-histoire-marseille-canal-de-suez-2.jpg`,
+      `${P}/musee-histoire-marseille-canal-de-suez-3.jpg`,
+    ],
     excerpt:
-      "Une extension qui prolonge l'écriture du lycée et enrichit ses espaces d'enseignement.",
+      "Une traversée historique et géopolitique du canal de Suez, entre récit documentaire et pièces de collection.",
     context:
-      "Compléter l'établissement par de nouveaux espaces, en cohérence avec l'existant et son cadre paysager.",
+      "Le Musée d'Histoire de Marseille consacrait une exposition temporaire à l'histoire du canal de Suez, de son percement à ses enjeux contemporains, à partir d'un fonds documentaire riche.",
     response:
-      "L'extension reprend les principes de compacité et de lumière du projet initial, et affirme une continuité architecturale claire.",
+      "La scénographie articule séquences narratives et mise en valeur des œuvres. Cimaises, vitrines et graphisme conduisent le visiteur le long d'un fil chronologique clair et sensible.",
     matter:
-      "Béton clair, bois et grandes baies, dans la lignée des matériaux du site.",
+      "Vitrines sur-mesure, tirages grand format et jeux de lumière au service des documents fragiles.",
     data: [
-      { label: "Surface", value: "3 200 m²" },
-      { label: "Livraison", value: "2023" },
-      { label: "Intervention", value: "Extension" },
-      { label: "Performance", value: "BBC" },
+      { label: "Maître d'ouvrage", value: "Ville de Marseille" },
+      { label: "Année", value: "2018" },
+      { label: "Type", value: "Exposition temporaire" },
+      { label: "Registre", value: "Histoire" },
     ],
   },
   {
-    slug: "alsh-bazoches-les-gallerandes",
-    title: "ALSH Bazoches-les-Gallerandes",
-    city: "Bazoches-les-Gallerandes (45)",
-    categories: ["Édifices publics", "Établissements scolaires"],
-    year: "2024",
-    program: "Accueil de loisirs sans hébergement",
-    surface: "980 m²",
+    slug: "gare-robert-doisneau",
+    title: "Gare Robert Doisneau",
+    city: "Carlux (24)",
+    categories: ["Centres d'interprétation", "Espaces tourisme"],
+    year: "2018",
+    program: "Espace d'interprétation & lieu de visite",
+    surface: "Ancienne gare réhabilitée",
     status: "Livré",
-    intervention: "Construction neuve",
-    mission: "Mission complète",
-    thumb: `${P}/alsh-bazoches.jpg`,
-    hero: `${P}/alsh-bazoches-full.jpg`,
-    gallery: [`${P}/alsh-bazoches-full.jpg`, `${P}/alsh-bazoches.jpg`],
+    intervention: "Muséographie & scénographie",
+    mission: "Conception & réalisation",
+    thumb: `${P}/gare-robert-doisneau-hero.jpg`,
+    hero: `${P}/gare-robert-doisneau-hero.jpg`,
+    gallery: [
+      `${P}/gare-robert-doisneau-hero.jpg`,
+      `${P}/gare-robert-doisneau-1.jpg`,
+      `${P}/gare-robert-doisneau-2.jpg`,
+      `${P}/gare-robert-doisneau-3.jpg`,
+    ],
     excerpt:
-      "Un équipement pour l'enfance, chaleureux et ouvert, en lien direct avec l'extérieur.",
+      "Une ancienne gare transformée en lieu de découverte autour de l'œuvre photographique de Robert Doisneau.",
     context:
-      "Offrir un lieu d'accueil de loisirs adapté aux enfants, sûr, lumineux et facile à vivre pour les équipes d'animation.",
+      "La Communauté de communes du Pays de Fénelon a réhabilité la gare de Carlux pour en faire un équipement culturel et touristique dédié à la photographie humaniste.",
     response:
-      "Un bâtiment de plain-pied, à l'échelle de l'enfant, largement ouvert sur des espaces extérieurs protégés. La construction privilégie des matériaux sains.",
+      "Le parcours joue de l'esprit du lieu ferroviaire pour raconter le regard du photographe. Cadrages, agrandissements et dispositifs de médiation guident une lecture émouvante de l'image.",
     matter:
-      "Construction bois, teintes naturelles, prolongements extérieurs abrités.",
+      "Grands tirages, mobilier évoquant l'univers de la gare et éclairage soigné des photographies.",
     data: [
-      { label: "Surface", value: "980 m²" },
-      { label: "Livraison", value: "2024" },
-      { label: "Structure", value: "Bois" },
-      { label: "Usage", value: "Enfance" },
+      { label: "Maître d'ouvrage", value: "CC Pays de Fénelon" },
+      { label: "Livraison", value: "2018" },
+      { label: "Type", value: "Espace d'interprétation" },
+      { label: "Thème", value: "Photographie" },
+    ],
+    featured: true,
+  },
+  {
+    slug: "chateau-de-foix",
+    title: "Château de Foix",
+    city: "Foix (09)",
+    categories: ["Musées & expositions", "Espaces tourisme"],
+    year: "2018",
+    program: "Parcours de visite — monument historique",
+    surface: "2 000 m²",
+    status: "Livré",
+    intervention: "Muséographie & scénographie",
+    mission: "Conception & réalisation",
+    thumb: `${P}/chateau-de-foix-hero.jpg`,
+    hero: `${P}/chateau-de-foix-hero.jpg`,
+    gallery: [
+      `${P}/chateau-de-foix-hero.jpg`,
+      `${P}/chateau-de-foix-1.jpg`,
+      `${P}/chateau-de-foix-2.jpg`,
+      `${P}/chateau-de-foix-3.jpg`,
+    ],
+    excerpt:
+      "Un parcours immersif dans le château comtal, du corps de garde à la salle d'armes, au fil de mille ans d'histoire.",
+    context:
+      "Le Département de l'Ariège a repensé la visite du château de Foix, forteresse médiévale emblématique, pour en faire une expérience vivante à l'échelle de ses 2 000 m².",
+    response:
+      "La scénographie séquence la visite en tableaux successifs : reconstitutions, dispositifs sensoriels et médiation multimédia font revivre le quotidien médiéval sans dénaturer la pierre.",
+    matter:
+      "Mobilier robuste, reconstitutions et audiovisuel intégrés à l'architecture défensive du monument.",
+    data: [
+      { label: "Maître d'ouvrage", value: "Département de l'Ariège" },
+      { label: "Surface", value: "2 000 m²" },
+      { label: "Livraison", value: "2018" },
+      { label: "Type", value: "Parcours permanent" },
+    ],
+    featured: true,
+  },
+  {
+    slug: "office-tourisme-grand-tourmalet",
+    title: "Office de tourisme Grand Tourmalet",
+    city: "Bagnères-de-Bigorre (65)",
+    categories: ["Espaces tourisme", "Mobilier sur-mesure"],
+    year: "2018",
+    program: "Aménagement d'accueil touristique",
+    surface: "Espace d'accueil",
+    status: "Livré",
+    intervention: "Agencement & signalétique",
+    mission: "Conception & réalisation",
+    thumb: `${P}/office-tourisme-grand-tourmalet-hero.jpg`,
+    hero: `${P}/office-tourisme-grand-tourmalet-hero.jpg`,
+    gallery: [
+      `${P}/office-tourisme-grand-tourmalet-hero.jpg`,
+      `${P}/office-tourisme-grand-tourmalet-1.jpg`,
+      `${P}/office-tourisme-grand-tourmalet-2.jpg`,
+      `${P}/office-tourisme-grand-tourmalet-3.jpg`,
+    ],
+    excerpt:
+      "Un espace d'accueil qui met en désir la destination montagne dès le premier regard.",
+    context:
+      "L'office de tourisme du Grand Tourmalet souhaitait un lieu d'accueil chaleureux, fonctionnel et identitaire, à la hauteur de l'un des sites pyrénéens les plus fréquentés.",
+    response:
+      "Le comptoir, la signalétique et les espaces d'information sont conçus comme un ensemble cohérent. Le mobilier sur-mesure fluidifie l'accueil et scénarise la découverte du territoire.",
+    matter:
+      "Bois, teintes montagne et grandes images de paysage. L'agencement conjugue confort d'accueil et robustesse d'usage.",
+    data: [
+      { label: "Maître d'ouvrage", value: "OT Grand Tourmalet" },
+      { label: "Livraison", value: "2018" },
+      { label: "Type", value: "Espace tourisme" },
+      { label: "Lieu", value: "Bagnères-de-Bigorre" },
     ],
   },
   {
-    slug: "groupe-scolaire-clos-beauvoys-pithiviers",
-    title: "Groupe scolaire du Clos Beauvoys",
-    city: "Pithiviers (45)",
-    categories: ["Établissements scolaires", "Édifices publics"],
-    year: "2025",
-    program: "Groupe scolaire",
-    surface: "3 900 m²",
-    status: "En chantier",
-    intervention: "Construction neuve",
-    mission: "Mission complète",
-    thumb: `${P}/clos-beauvoys.jpg`,
-    hero: `${P}/clos-beauvoys-full.jpg`,
-    gallery: [`${P}/clos-beauvoys-full.jpg`, `${P}/clos-beauvoys.jpg`],
+    slug: "mediatheque-chalucet-toulon",
+    title: "Médiathèque Chalucet",
+    city: "Toulon (83)",
+    categories: ["Signalétique & graphisme"],
+    year: "2020",
+    program: "Signalétique culturelle & directionnelle",
+    surface: "Équipement culturel",
+    status: "Livré",
+    intervention: "Signalétique & graphisme",
+    mission: "Conception & réalisation",
+    thumb: `${P}/mediatheque-chalucet-toulon-hero.jpg`,
+    hero: `${P}/mediatheque-chalucet-toulon-hero.jpg`,
+    gallery: [
+      `${P}/mediatheque-chalucet-toulon-hero.jpg`,
+      `${P}/mediatheque-chalucet-toulon-1.jpg`,
+      `${P}/mediatheque-chalucet-toulon-2.jpg`,
+      `${P}/mediatheque-chalucet-toulon-3.jpg`,
+    ],
     excerpt:
-      "Un groupe scolaire neuf, sobre et durable, conçu autour du confort d'apprentissage.",
+      "Une signalétique graphique qui oriente, identifie et donne une voix à la médiathèque.",
     context:
-      "Créer une école contemporaine répondant aux enjeux énergétiques actuels et aux besoins pédagogiques d'aujourd'hui.",
+      "La Ville de Toulon voulait doter sa médiathèque Chalucet d'une signalétique claire, à la fois directionnelle et culturelle, en cohérence avec l'architecture contemporaine du bâtiment.",
     response:
-      "Organisation claire autour de cours et de préaux, apports solaires maîtrisés, ventilation naturelle et matériaux durables structurent le projet.",
+      "Un système graphique complet articule orientation, identification des espaces et messages de médiation. La typographie et la couleur deviennent des repères pour tous les publics.",
     matter:
-      "Bois, béton bas carbone et protections solaires. Le confort d'été comme le confort d'hiver sont travaillés dès la conception.",
+      "Typographie affirmée, aplats de couleur et supports intégrés à l'architecture, pensés pour l'accessibilité.",
     data: [
-      { label: "Surface", value: "3 900 m²" },
-      { label: "Statut", value: "En chantier" },
-      { label: "Approche", value: "Bas carbone" },
-      { label: "Ville", value: "Pithiviers" },
+      { label: "Maître d'ouvrage", value: "Ville de Toulon" },
+      { label: "Livraison", value: "2020" },
+      { label: "Type", value: "Signalétique" },
+      { label: "Lieu", value: "Médiathèque Chalucet" },
+    ],
+  },
+  {
+    slug: "la-mouniere-septfonds",
+    title: "La Mounière",
+    city: "Septfonds (82)",
+    categories: ["Centres d'interprétation"],
+    year: "2017",
+    program: "Centre d'interprétation — mémoire locale",
+    surface: "Lieu de mémoire",
+    status: "Livré",
+    intervention: "Muséographie & scénographie",
+    mission: "Conception & réalisation",
+    thumb: `${P}/la-mouniere-septfonds-hero.jpg`,
+    hero: `${P}/la-mouniere-septfonds-hero.jpg`,
+    gallery: [
+      `${P}/la-mouniere-septfonds-hero.jpg`,
+      `${P}/la-mouniere-septfonds-1.jpg`,
+      `${P}/la-mouniere-septfonds-2.jpg`,
+      `${P}/la-mouniere-septfonds-3.jpg`,
+    ],
+    excerpt:
+      "Un lieu de mémoire qui transmet l'histoire locale avec justesse et émotion.",
+    context:
+      "La commune de Septfonds a souhaité valoriser la mémoire de son territoire à travers un espace d'interprétation accessible et sensible.",
+    response:
+      "La scénographie tisse récits, objets et documents pour restituer une histoire humaine. Le parcours privilégie la sobriété et la place accordée au témoignage.",
+    matter:
+      "Mobilier sobre, tirages documentaires et dispositifs de médiation à hauteur du visiteur.",
+    data: [
+      { label: "Maître d'ouvrage", value: "Ville de Septfonds" },
+      { label: "Livraison", value: "2017" },
+      { label: "Type", value: "Centre d'interprétation" },
+      { label: "Registre", value: "Mémoire" },
+    ],
+  },
+  {
+    slug: "centre-histoire-resistance-deportation-ariege",
+    title: "Centre d'Histoire de la Résistance et de la Déportation",
+    city: "Varilhes (09)",
+    categories: ["Musées & expositions", "Centres d'interprétation"],
+    year: "2016",
+    program: "Musée de mémoire",
+    surface: "Espace muséal",
+    status: "Livré",
+    intervention: "Muséographie & scénographie",
+    mission: "Conception & réalisation",
+    thumb: `${P}/centre-histoire-resistance-deportation-ariege-hero.jpg`,
+    hero: `${P}/centre-histoire-resistance-deportation-ariege-hero.jpg`,
+    gallery: [
+      `${P}/centre-histoire-resistance-deportation-ariege-hero.jpg`,
+      `${P}/centre-histoire-resistance-deportation-ariege-1.jpg`,
+      `${P}/centre-histoire-resistance-deportation-ariege-2.jpg`,
+      `${P}/centre-histoire-resistance-deportation-ariege-3.jpg`,
+    ],
+    excerpt:
+      "Un parcours de mémoire grave et digne, dédié à la Résistance et à la Déportation en Ariège.",
+    context:
+      "Le canton de Varilhes portait un projet muséal sensible, à la responsabilité mémorielle forte, destiné à transmettre l'histoire de la Résistance et de la Déportation aux nouvelles générations.",
+    response:
+      "La scénographie adopte un ton sobre et recueilli. La lumière, le rythme des séquences et la place du document construisent un récit respectueux, propice à la transmission scolaire.",
+    matter:
+      "Palette sombre, lumière contrôlée et vitrines protectrices pour des documents et objets de collection fragiles.",
+    data: [
+      { label: "Maître d'ouvrage", value: "Canton de Varilhes" },
+      { label: "Livraison", value: "2016" },
+      { label: "Type", value: "Musée de mémoire" },
+      { label: "Registre", value: "Histoire" },
+    ],
+  },
+  {
+    slug: "cartes-sur-table-albi",
+    title: "Cartes sur table",
+    city: "Albi (81)",
+    categories: ["Scénographie temporaire", "Musées & expositions"],
+    year: "2016",
+    program: "Exposition temporaire",
+    surface: "Salle d'exposition",
+    status: "Livré",
+    intervention: "Scénographie d'exposition",
+    mission: "Conception & réalisation",
+    thumb: `${P}/cartes-sur-table-albi-hero.jpg`,
+    hero: `${P}/cartes-sur-table-albi-hero.jpg`,
+    gallery: [
+      `${P}/cartes-sur-table-albi-hero.jpg`,
+      `${P}/cartes-sur-table-albi-1.jpg`,
+      `${P}/cartes-sur-table-albi-2.jpg`,
+      `${P}/cartes-sur-table-albi-3.jpg`,
+    ],
+    excerpt:
+      "Une exposition temporaire vivante, qui invite le visiteur à manipuler, comparer et comprendre.",
+    context:
+      "Pour l'agglomération d'Albi, cette exposition temporaire devait rendre un sujet documentaire accessible et attractif, dans une logique de médiation active.",
+    response:
+      "La scénographie mise sur l'interaction : tables de consultation, dispositifs manipulables et graphisme pédagogique rythment un parcours ludique et informé.",
+    matter:
+      "Mobilier de manipulation, cartographie grand format et graphisme didactique au cœur du dispositif.",
+    data: [
+      { label: "Maître d'ouvrage", value: "Agglomération d'Albi" },
+      { label: "Année", value: "2016" },
+      { label: "Type", value: "Exposition temporaire" },
+      { label: "Registre", value: "Médiation" },
     ],
   },
 ];

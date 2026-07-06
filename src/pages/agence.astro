@@ -4,45 +4,48 @@ import SplitTitle from "../components/SplitTitle.astro";
 import { withBase } from "../lib/url";
 
 const team = [
-  { name: "Stéphane Caussarrieu", role: "Architecte D.P.L.G.", img: "/images/team/stephane.jpg", bio: "Fondateur de l'agence, indépendant depuis 1995. Il porte une architecture attentive au site, à l'usage et à la performance." },
-  { name: "Caroline Caussarrieu", role: "Designer d'intérieur", img: "/images/team/caroline.jpg", bio: "Elle prolonge l'architecture jusqu'à l'aménagement, pour des lieux de vie cohérents et agréables à vivre." },
-  { name: "Julie Cachinho", role: "Architecte D.E. · BIM Manager", img: "/images/team/julie.jpg", bio: "Elle pilote la maquette numérique et la coordination des maquettes sur l'ensemble des projets." },
-  { name: "Damien Marlet", role: "Architecte D.P.L.G.", img: "/images/team/damien.jpg", bio: "Il accompagne les projets de la conception au chantier, avec exigence et rigueur." },
-  { name: "Apolline de Charette", role: "Architecte D.E.", img: "/images/team/apolline.jpg", bio: "Elle développe les projets d'équipements publics et scolaires, du dessin à l'exécution." },
-  { name: "Léopold Mallein", role: "Architecte H.M.O.N.P.", img: "/images/team/leopold.jpg", bio: "Il conçoit et suit les projets avec une attention constante à la qualité d'usage." },
-  { name: "Sandrine Arnaud", role: "Architecte d'intérieur", img: "/images/team/sandrine.jpg", bio: "Elle dessine les espaces intérieurs, les matières et le mobilier au service du confort." },
-  { name: "Christel Villaret", role: "Assistante technique de direction", img: "/images/team/christel.jpg", bio: "Elle assure la coordination administrative et technique de l'agence au quotidien." },
-];
-
-const timeline = [
-  { y: "1995", t: "Stéphane Caussarrieu s'installe comme architecte indépendant." },
-  { y: "2011", t: "Création de CS Architecture, agence d'architecture et de design d'intérieur." },
-  { y: "≈ 2015", t: "Adoption du BIM : tous les projets sont conçus en maquette numérique." },
-  { y: "Aujourd'hui", t: "Une équipe pluridisciplinaire de huit personnes au service du bâtiment public et privé." },
+  {
+    name: "Claire Simonet",
+    role: "Scénographe-designer · Fondatrice",
+    img: "/images/team/claire.jpg",
+    bio: "Formée à la scénographie à l'University of Lincoln (Royaume-Uni), elle fonde CS Design et enseigne la muséographie au sein d'un Master de l'Université de Toulouse, à Cahors.",
+  },
+  {
+    name: "Christian Sintes",
+    role: "Chargé d'affaires · OPC",
+    img: "/images/team/christian.jpg",
+    bio: "Fort de quinze ans d'expérience en pilotage et coordination, il assure le suivi, l'ordonnancement et la coordination des chantiers jusqu'au montage.",
+  },
+  {
+    name: "Camille Provendier",
+    role: "Muséographe partenaire",
+    img: "/images/team/camille.jpg",
+    bio: "Géographe spécialisée en médiation environnementale, elle apporte une lecture sensible des territoires et du vivant au service des contenus.",
+  },
 ];
 
 const values = [
-  ["Écoute", "L'écoute et l'échange sont les bases d'une architecture réussie."],
-  ["Transparence", "Franchise et accompagnement guident notre relation au maître d'ouvrage."],
-  ["Réponse globale", "De la création à l'aménagement intérieur, une seule et même équipe."],
+  ["Écoute", "Comprendre le lieu, le récit et les publics avant de dessiner quoi que ce soit."],
+  ["Sur-mesure", "Chaque dispositif, mobilier ou graphisme est conçu pour son contexte, jamais dupliqué."],
+  ["Éco-conception", "Matériaux justes, réemploi et sobriété : concevoir des expositions responsables."],
 ];
 ---
 <Base
-  title="L'agence — CS Architecture, architectes à Orléans"
-  description="CS Architecture, agence d'architecture et de design d'intérieur à Orléans. Trente ans d'expérience autour de Stéphane Caussarrieu, architecte DPLG, et d'une équipe pluridisciplinaire."
+  title="L'agence — CS Design, muséographie & scénographie"
+  description="CS Design est une agence pluridisciplinaire de muséographie et d'aménagement d'espaces recevant du public, fondée par Claire Simonet, scénographe-designer."
   overlayDark={false}
   image="/images/site/agence.jpg"
 >
   <!-- Hero éditorial -->
   <section class="shell pt-36 md:pt-48 pb-16">
     <p class="mono mb-8" data-reveal>L'agence</p>
-    <SplitTitle as="h1" class="display t-hero max-w-[16ch]" lines={["Trente ans", { text: "d'architecture", italic: true }, { text: "attentive.", accent: true }]} />
+    <SplitTitle as="h1" class="display t-hero max-w-[16ch]" lines={["Une agence", { text: "pluridisciplinaire", italic: true }, { text: "du récit.", accent: true }]} />
     <div class="grid12 mt-12 gap-y-8">
       <p class="col-span-12 lg:col-span-6 t-lead text-[color:var(--color-muted)]" data-reveal style="--reveal-delay:160ms">
-        Nous apportons une réponse globale aux ambitions de nos clients, qui nous confient la création, la réhabilitation, l'optimisation énergétique et environnementale de leurs bâtiments, ainsi que le design des espaces à vivre.
+        CS Design est une agence pluridisciplinaire dans le domaine de la muséographie et de l'aménagement d'espaces recevant du public. Nous concevons vos projets d'aménagement et vous accompagnons dans leur réalisation.
       </p>
       <p class="col-span-12 lg:col-span-5 lg:col-start-8 t-lead text-[color:var(--color-ink)] self-end" data-reveal style="--reveal-delay:240ms">
-        L'alliance de Stéphane Caussarrieu, architecte DPLG, et Caroline Caussarrieu, designer d'intérieur, permet d'aller plus loin : jusque dans l'agencement.
+        Du concept muséographique au montage sur site, l'ensemble des compétences est réuni en interne : muséographie, scénographie, graphisme, mobilier et coordination.
       </p>
     </div>
   </section>
@@ -50,7 +53,7 @@ const values = [
   <!-- Grande image -->
   <section class="shell pb-20 md:pb-28">
     <div class="mask-reveal aspect-[16/9] bg-[color:var(--color-stone)] overflow-hidden">
-      <img src={withBase("/images/site/agence.jpg")} alt="L'agence CS Architecture à Orléans" loading="lazy" class="w-full h-[110%] object-cover" data-parallax="0.06" />
+      <img src={withBase("/images/site/agence.jpg")} alt="L'agence CS Design — muséographie et scénographie" loading="lazy" class="w-full h-[110%] object-cover" data-parallax="0.06" />
     </div>
   </section>
 
@@ -72,12 +75,12 @@ const values = [
   <section class="bg-[color:var(--color-paper-2)] py-24 md:py-32">
     <div class="shell">
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-        <SplitTitle as="h2" class="display t-h1" lines={["Une équipe", { text: "pluridisciplinaire.", italic: true }]} />
-        <p class="mono max-w-xs">Architectes, designers et technicien·ne·s réunis autour d'une même exigence.</p>
+        <SplitTitle as="h2" class="display t-h1" lines={["L'équipe", { text: "CS Design.", italic: true }]} />
+        <p class="mono max-w-xs">Scénographe, muséographe et pilote de projet réunis autour d'une même exigence.</p>
       </div>
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+      <div class="grid grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 max-w-5xl">
         {team.map((m, i) => (
-          <div class="member group" data-reveal style={`--reveal-delay:${(i % 4) * 80}ms`}>
+          <div class="member group" data-reveal style={`--reveal-delay:${(i % 3) * 100}ms`}>
             <div class="mask-reveal aspect-[3/4] bg-[color:var(--color-stone)] overflow-hidden relative">
               <img src={withBase(m.img)} alt={m.name} loading="lazy" class="w-full h-full object-cover grayscale-[0.15] transition-all duration-[1.2s] group-hover:grayscale-0 group-hover:scale-[1.04]" />
               <div class="absolute inset-0 bg-[color:var(--color-ink)]/85 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-5 z-[3]">
@@ -92,20 +95,16 @@ const values = [
     </div>
   </section>
 
-  <!-- Frise / timeline -->
+  <!-- Enseignement & transmission -->
   <section class="shell py-24 md:py-32">
-    <div class="max-w-2xl mb-16">
-      <p class="mono mb-6" data-reveal>Repères</p>
-      <SplitTitle as="h2" class="display t-h1" lines={["Une histoire", { text: "continue.", italic: true }]} />
+    <div class="grid12 gap-y-12 items-center">
+      <div class="col-span-12 lg:col-span-5">
+        <p class="mono mb-6" data-reveal>Transmission</p>
+        <SplitTitle as="h2" class="display t-h1" lines={["Concevoir,", { text: "et transmettre.", italic: true }]} />
+      </div>
+      <p class="col-span-12 lg:col-span-6 lg:col-start-7 t-lead text-[color:var(--color-muted)] leading-relaxed" data-reveal style="--reveal-delay:140ms">
+        Au-delà de la commande, CS Design partage sa pratique : Claire Simonet enseigne la muséographie en Master à l'Université de Toulouse. Cet ancrage pédagogique nourrit une conception rigoureuse, à jour des enjeux de médiation, d'accessibilité et d'éco-conception.
+      </p>
     </div>
-    <ol class="border-l border-[color:var(--color-line)]">
-      {timeline.map((e, i) => (
-        <li class="relative pl-8 md:grid md:grid-cols-12 md:gap-6 md:pl-0 py-8 border-b border-[color:var(--color-line)] group" data-reveal style={`--reveal-delay:${i * 80}ms`}>
-          <span class="absolute -left-[5px] top-10 md:hidden h-2 w-2 rounded-full bg-[color:var(--color-sage)]"></span>
-          <span class="display text-[clamp(1.8rem,4vw,3rem)] leading-none md:col-span-3 text-[color:var(--color-sage)]">{e.y}</span>
-          <p class="t-lead text-[color:var(--color-ink)] md:col-span-8 mt-3 md:mt-2 leading-snug">{e.t}</p>
-        </li>
-      ))}
-    </ol>
   </section>
 </Base>
